@@ -9,7 +9,16 @@
             include 'logic.php';
 
         ?>
-        <button>Get External var from PHP</button>
-        <h3>Text to be updated</h3>
+        <script>
+            function getAnswer()
+            {
+                document.getElementById("answer").innerHTML = "5";
+                //$.get("View.php")
+            }
+        </script>
+
+        <button onclick="getAnswer()" >Get External var from PHP</button>
+
+        <h3 id="answer">Text to be updated</h3>
      </body>
 </html>
