@@ -1,5 +1,9 @@
-$(document).ready(function(){
-    $("button").click(function(){
-        $("#div1").load("demo_test.txt");
+function getAnswer()
+{
+    //document.getElementById("answer").innerHTML = "5";
+    $.get('logic.php', function(data)
+    {
+        $('#answer').text(data);
     });
-});
+
+}
