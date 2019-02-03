@@ -13,7 +13,8 @@ class View
 
     public function outputQuestion()
     {
-        return "<p>" . $this->model->strQuestion . "</p>";
+        return $this->model->strQuestion;
+        //return "<p>" . $this->model->strQuestion . "</p>";
     }
 
     public function outputAnswer()
