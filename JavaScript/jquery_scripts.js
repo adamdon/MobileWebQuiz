@@ -1,6 +1,6 @@
 function getAnswer()
 {
-    $.get('logic.php?request=a', function(data)
+    $.get('Interface.php?request=a', function(data)
     {
         $('#answer').text(data);
     });
@@ -8,7 +8,7 @@ function getAnswer()
 
 function getQuestion()
 {
-    $.get('logic.php?request=q', function(data)
+    $.get('Interface.php?request=q', function(data)
     {
         $('#question').text(data);
     });

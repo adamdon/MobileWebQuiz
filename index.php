@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 
      <head>
          <title>PHP Test</title>
@@ -8,7 +8,7 @@
 
      <body onload="getQuestion()">
         <?php
-            include 'logic.php';
+            include 'Interface.php';
         ?>
 
         <button onclick="getAnswer()" >Get External var from PHP</button>
