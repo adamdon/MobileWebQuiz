@@ -3,11 +3,9 @@
 class View
 {
     private $model;
-    private $controller;
 
-    public function __construct($controller, $model)
+    public function __construct($model)
     {
-        $this->controller = $controller;
         $this->model = $model;
     }
 
