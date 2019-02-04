@@ -1,25 +1,24 @@
 <?php
-include 'PHP/QuestionModel.php';
+//include 'PHP/QuestionModel.php';
 include 'PHP/Controller.php';
-include 'PHP/View.php';
+//include 'PHP/View.php';
 
 
 if(isset($_GET['request']))
 {
     $passedVar = $_GET['request'];
 
-    $question1 = new QuestionModel("what is 2 + 2", "4");
-    $view = new View($question1);
-    $controller = new Controller($question1, $view);
+
+    $controller = new Controller();
 
 
     if ($passedVar == "a")
     {
-        echo $controller->GetAnswer();
+        echo $controller->GetAnswer(0);
     }
     else if ($passedVar == "q")
     {
-        echo $controller->GetQuestion();
+        echo $controller->GetQuestion(0);
     }
 
 
