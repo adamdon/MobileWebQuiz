@@ -1,11 +1,10 @@
 function getQuestion()
 {
-    // let selector = document.getElementById("selectQu");
-    // let strElementSelected = selector.options[selector.selectedIndex].text;
-    //var $element = $('#selectQu').val();
+    let intQuestionNum = $('#selectQu').val();
+    let strQuestionNum = intQuestionNum.toString();
+    let strURL = "Interface.php?request=question&q=" + strQuestionNum;
 
-    //. $('#selectQu').val().toString()
-    $.get('Interface.php?request=question&q=2', function(data)
+    $.get(strURL, function(data)
     {
         $('#question').text(data);
     });
@@ -13,8 +12,12 @@ function getQuestion()
 
 function getAnswer()
 {
+    let intQuestionNum = $('#selectQu').val();
+    let strQuestionNum = intQuestionNum.toString();
+    let strURL = "Interface.php?request=answer&q=" + strQuestionNum;
+
     $.get
-    ('Interface.php?request=answer&q=2', function(data)
+    (strURL, function(data)
     {
         $('#answer').text(data);
     });

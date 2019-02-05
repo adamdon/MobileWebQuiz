@@ -16,7 +16,6 @@
             <option value="1">Question 2</option>
             <option value="2">Question 3</option>
             <option value="3">Question 4</option>
-            <option value="4">Question 5</option>
         </select>
 
         <button onclick="getQuestion()" >Get Question</button>

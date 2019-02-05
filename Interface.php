@@ -7,7 +7,7 @@ include 'PHP/Controller.php';
 if( (isset($_GET['request'])) && (isset($_GET['q']))  ) //&& (isset($_GET['request'])) && (isset($_GET['q'])) )
 {
     $passedVar = $_GET['request'];
-    $passedQuestionVar = $_GET['q'];
+    $passedQuestionVar = (int)$_GET['q'];
 
 
     $controller = new Controller();
