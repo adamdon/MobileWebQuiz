@@ -4,21 +4,22 @@ include 'PHP/Controller.php';
 //include 'PHP/View.php';
 
 
-if(isset($_GET['request']))
+if( (isset($_GET['request'])) && (isset($_GET['q']))  ) //&& (isset($_GET['request'])) && (isset($_GET['q'])) )
 {
     $passedVar = $_GET['request'];
+    $passedQuestionVar = $_GET['q'];
 
 
     $controller = new Controller();
 
 
-    if ($passedVar == "a")
+    if ($passedVar == "answer")
     {
-        echo $controller->GetAnswer(0);
+        echo $controller->GetAnswer($passedQuestionVar);
     }
-    else if ($passedVar == "q")
+    else if ($passedVar == "question")
     {
-        echo $controller->GetQuestion(0);
+        echo $controller->GetQuestion($passedQuestionVar);
     }
 
 

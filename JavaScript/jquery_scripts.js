@@ -1,15 +1,21 @@
-function getAnswer()
+function getQuestion()
 {
-    $.get('Interface.php?request=a', function(data)
+    // let selector = document.getElementById("selectQu");
+    // let strElementSelected = selector.options[selector.selectedIndex].text;
+    //var $element = $('#selectQu').val();
+
+    //. $('#selectQu').val().toString()
+    $.get('Interface.php?request=question&q=2', function(data)
     {
-        $('#answer').text(data);
+        $('#question').text(data);
     });
 }
 
-function getQuestion()
+function getAnswer()
 {
-    $.get('Interface.php?request=q', function(data)
+    $.get
+    ('Interface.php?request=answer&q=2', function(data)
     {
-        $('#question').text(data);
+        $('#answer').text(data);
     });
 }
