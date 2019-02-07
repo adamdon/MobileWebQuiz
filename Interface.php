@@ -21,6 +21,12 @@ if( (isset($_GET['request'])) && (isset($_GET['q']))  ) //&& (isset($_GET['reque
     {
         echo $controller->GetQuestion($passedQuestionVar);
     }
+    else if ($passedVar == "newGame")
+    {
+        echo $controller->outputNewGameHTML();
+    }
+
+
 
 
 }

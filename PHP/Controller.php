@@ -18,9 +18,13 @@ class Controller
 
     public $arrayOfQuestions;
 
+    public $currentView;
+
     public function __construct()  //$model, $view)
     {
         $this->setupQuestions();
+        $this->currentView = new View;
+
     }
 
     public function setupQuestions()
@@ -44,6 +48,12 @@ class Controller
     public function GetQuestion($QuestionNumber)
     {
         return $this->arrayOfQuestions[$QuestionNumber]->strQuestion;
+    }
+
+
+    public function outputNewGameHTML()
+    {
+        return $this->currentView->outputNewGameHTML(); //$cu
     }
 
 
