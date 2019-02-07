@@ -1,6 +1,11 @@
 <?php
 
 include 'QuestionModel.php';
+include 'PlayerModel.php';
+include 'GameModel.php';
+include 'RoundModel.php';
+
+
 include 'View.php';
 
 class Controller
@@ -9,6 +14,7 @@ class Controller
     public $question2;
     public $question3;
     public $question4;
+    public $question5;
 
     public $arrayOfQuestions;
 
@@ -19,12 +25,14 @@ class Controller
 
     public function setupQuestions()
     {
-        $this->question1 = new QuestionModel("what is 2 + 2", "4");
-        $this->question2 = new QuestionModel("what is 1 + 1", "2");
-        $this->question3 = new QuestionModel("what is 1 + 4", "5");
-        $this->question4 = new QuestionModel("what is 2 + 3", "5");
+        $this->question1 = new QuestionModel("What is the capital of France", "Paris");
+        $this->question2 = new QuestionModel("What is the capital of Germany", "Berlin");
+        $this->question3 = new QuestionModel("What is the capital of Italy", "Rome");
+        $this->question4 = new QuestionModel("What is the capital of Spain", "Madrid");
+        $this->question5 = new QuestionModel("What is the capital of Netherlands", "Amsterdam");
 
-        $this->arrayOfQuestions = array($this->question1, $this->question2, $this->question3, $this->question4);
+
+        $this->arrayOfQuestions = array($this->question1, $this->question2, $this->question3, $this->question4, $this->question5);
     }
 
     public function GetAnswer($QuestionNumber)
