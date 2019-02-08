@@ -38,7 +38,7 @@ class Controller
     public function outputNewGameHTML()
     {
         $this->currentGame = new GameModel($this->testPlayer,1, $this->arrayOfQuestions);
-        return $this->currentView->outputNewGameHTML(); //$cu
+        return $this->currentView->outputNewGameHTML($this->currentGame); //$cu
     }
 
 

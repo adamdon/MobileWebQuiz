@@ -21,8 +21,14 @@ class View
         return "<p>" . $this->model->strAnswer . "</p>";
     }
 
-    public function outputNewGameHTML()
+    public function outputNewGameHTML($currentGame)
     {
+        $currentQuestion = $currentGame->arrayOfRounds[1]->questionCorrect->strQuestion;
+        $correctAnswer = $currentGame->arrayOfRounds[1]->questionCorrect->strAnswer;
+        $wrongAnswerA = $currentGame->arrayOfRounds[1]->questionWrongA->strAnswer;
+        $wrongAnswerB = $currentGame->arrayOfRounds[1]->questionWrongB->strAnswer;
+
+
         return '   
             <select id="selectQu">
                 <option value="0" selected="selected">Question 1</option>
@@ -37,6 +43,16 @@ class View
     
             <button onclick="getAnswer()" >Get Answer</button>
             <h3 id="answer">Answer text to be updated</h3>
+            <p>###############DEBUG##########</p>
+            <br>
+            <br>
+            <h3>' . $currentQuestion . ' </h3>
+            <form action="">
+                  <input type="radio" name="options" value="radioOne">'.$correctAnswer.'<br>
+                  <input type="radio" name="options" value="radioTwo">'.$wrongAnswerA.'<br>
+                  <input type="radio" name="options" value="radioThree">'.$wrongAnswerB.'<br>
+            </form>
+            
          </body>
 	    ';
     }
@@ -45,6 +61,8 @@ class View
     //to-do fix for real layout
     public function outputNewGameHTML2()
     {
+
+
         return '   
             <select id="selectQu">
                 <option value="0" selected="selected">Question 1</option>
@@ -59,6 +77,8 @@ class View
     
             <button onclick="getAnswer()" >Get Answer</button>
             <h3 id="answer">Answer text to be updated</h3>
+           
+            
          </body>
 	    ';
     }
