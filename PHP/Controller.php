@@ -10,7 +10,9 @@ include 'RoundModel.php';
 class Controller
 {
     public $arrayOfQuestions;
+    public $testPlayer;
 
+    public $currentGame;
     public $currentView;
     public $dAO;
 
@@ -18,6 +20,7 @@ class Controller
     {
         $this->currentView = new View;
         $this->dAO = new DataAccessObject();
+        $this->testPlayer = new PlayerModel("Jonny5", "pass123");
 
         $this->arrayOfQuestions = $this->dAO->setupQuestions();
     }
@@ -34,6 +37,7 @@ class Controller
 
     public function outputNewGameHTML()
     {
+        $this->currentGame = new GameModel($this->testPlayer,1, $this->arrayOfQuestions);
         return $this->currentView->outputNewGameHTML(); //$cu
     }
 
