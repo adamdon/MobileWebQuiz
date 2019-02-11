@@ -21,7 +21,7 @@ class View
         return "<p>" . $this->model->strAnswer . "</p>";
     }
 
-    public function outputNewGameHTML($currentGame)
+    public function getNewGameHTML($currentGame)
     {
         $currentQuestion = $currentGame->arrayOfRounds[1]->questionCorrect->strQuestion;
         $correctAnswer = $currentGame->arrayOfRounds[1]->questionCorrect->strAnswer;
@@ -52,6 +52,7 @@ class View
                   <input type="radio" name="options" value="radioTwo">'.$wrongAnswerA.'<br>
                   <input type="radio" name="options" value="radioThree">'.$wrongAnswerB.'<br>
             </form>
+            <button onclick="getAnswer()" >Submit Answer</button>
             
          </body>
 	    ';
@@ -78,8 +79,14 @@ class View
             <button onclick="getAnswer()" >Get Answer</button>
             <h3 id="answer">Answer text to be updated</h3>
            
-            
-         </body>
+	    ';
+    }
+
+    public function getStartSessionHTML()
+    {
+        return '   
+            <button onclick="startGame()" >Start Game!</button>
+    
 	    ';
     }
     

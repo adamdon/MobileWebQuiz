@@ -6,24 +6,28 @@ include 'PHP/Controller.php';
 
 if( (isset($_GET['request'])) && (isset($_GET['q']))  ) //&& (isset($_GET['request'])) && (isset($_GET['q'])) )
 {
-    $passedVar = $_GET['request'];
-    $passedQuestionVar = (int)$_GET['q'];
+    $passedRequestVar = $_GET['request'];
+    $passedParameterVar = (int)$_GET['q'];
 
 
     $controller = new Controller();
 
 
-    if ($passedVar == "answer")
+    if ($passedRequestVar == "answer")
     {
-        echo $controller->GetAnswer($passedQuestionVar);
+        echo $controller->GetAnswer($passedParameterVar);
     }
-    else if ($passedVar == "question")
+    else if ($passedRequestVar == "question")
     {
-        echo $controller->GetQuestion($passedQuestionVar);
+        echo $controller->GetQuestion($passedParameterVar);
     }
-    else if ($passedVar == "newGame")
+    else if ($passedRequestVar == "newGame")
     {
         echo $controller->outputNewGameHTML();
+    }
+    else if ($passedRequestVar == "startSession")
+    {
+        echo $controller->outputStartSessionHTML();
     }
 
 
