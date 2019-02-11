@@ -27,6 +27,7 @@ class View
         $correctAnswer = $currentGame->arrayOfRounds[1]->questionCorrect->strAnswer;
         $wrongAnswerA = $currentGame->arrayOfRounds[1]->questionWrongA->strAnswer;
         $wrongAnswerB = $currentGame->arrayOfRounds[1]->questionWrongB->strAnswer;
+        $textOfStatus = $currentGame->textOfStatus;
 
 
         return '   
@@ -48,39 +49,17 @@ class View
             <br>
             <h3>' . $currentQuestion . ' </h3>
             <form action="">
-                  <input type="radio" name="options" value="radioOne">'.$correctAnswer.'<br>
-                  <input type="radio" name="options" value="radioTwo">'.$wrongAnswerA.'<br>
-                  <input type="radio" name="options" value="radioThree">'.$wrongAnswerB.'<br>
+                  <input type="radio" name="options" value="1">'.$correctAnswer.'<br>
+                  <input type="radio" name="options" value="2">'.$wrongAnswerA.'<br>
+                  <input type="radio" name="options" value="3">'.$wrongAnswerB.'<br>
             </form>
-            <button onclick="getAnswer()" >Submit Answer</button>
+            <button onclick="submitAnswer()" >Submit Answer</button>
+            <h3 id="status">Status: ' . $textOfStatus .' </h3>
             
          </body>
 	    ';
     }
 
-
-    //to-do fix for real layout
-    public function outputNewGameHTML2()
-    {
-
-
-        return '   
-            <select id="selectQu">
-                <option value="0" selected="selected">Question 1</option>
-                <option value="1">Question 2</option>
-                <option value="2">Question 3</option>
-                <option value="3">Question 4</option>
-                <option value="4">Question 5</option>
-            </select>
-    
-            <button onclick="getQuestion()" >Get Question</button>
-            <h3 id="question">question text to be updated</h3>
-    
-            <button onclick="getAnswer()" >Get Answer</button>
-            <h3 id="answer">Answer text to be updated</h3>
-           
-	    ';
-    }
 
     public function getStartSessionHTML()
     {

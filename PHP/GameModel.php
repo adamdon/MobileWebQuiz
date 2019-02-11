@@ -4,8 +4,13 @@ class GameModel
 {
     public $player;
     public $numberOfRoundsToBePlayed;
+
     public $arrayOfRounds;
     public $arrayOfQuestions;
+    public $numberOfCurrentRound;
+    public $textOfStatus;
+
+    public $numberOfScore;
 
     public function __construct($player, $numberOfRoundsToBePlayed, $arrayOfQuestions) //, $arrayOfRounds)
     {
@@ -14,6 +19,9 @@ class GameModel
         $this->arrayOfQuestions = $arrayOfQuestions;
 
         $this->arrayOfRounds = $this->setupRounds($numberOfRoundsToBePlayed);
+        $this->numberOfCurrentRound = 0;
+        $this->textOfStatus = "Game Start!";
+        $this->numberOfScore = 0;
     }
 
     //to-do: make work with more than 1 round via Random()
@@ -33,6 +41,39 @@ class GameModel
         return $arrayOfFilledRounds;
 
     }
+
+    public function submitAnswer($radioSelected)
+    {
+        $radioSelected = (int)$radioSelected;
+        if($radioSelected == 1)
+        {
+            $this->answerCorrect();
+        }
+        else
+        {
+            $this->answerWrong();
+        }
+
+        $this->nextRound();
+    }
+
+    public function answerCorrect()
+    {
+        $this->numberOfScore = ($this->numberOfScore + 1);
+        $this->textOfStatus = "Correct!";
+    }
+
+    public function answerWrong()
+    {
+        $this->textOfStatus = "Wrong!";
+    }
+
+    public function nextRound()
+    {
+        $this->numberOfCurrentRound = ($this->numberOfCurrentRound + 1);
+    }
+
+
 
 
 

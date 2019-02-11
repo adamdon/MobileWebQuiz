@@ -1,4 +1,5 @@
 <?php
+
 include 'View.php';
 include 'DataAccessObject.php';
 
@@ -35,15 +36,22 @@ class Controller
         return $this->arrayOfQuestions[$QuestionNumber]->strQuestion;
     }
 
-    public function outputNewGameHTML()
-    {
-        $this->currentGame = new GameModel($this->testPlayer,1, $this->arrayOfQuestions);
-        return $this->currentView->getNewGameHTML($this->currentGame); //$cu
-    }
-
     public function outputStartSessionHTML()
     {
         return $this->currentView->getStartSessionHTML(); //$cu
+    }
+
+    public function outputNewGameHTML()
+    {
+        $this->currentGame = new GameModel($this->testPlayer,1, $this->arrayOfQuestions);
+        return $this->currentView->getNewGameHTML($this->currentGame);
+    }
+
+    public function outputSubmitAnswerHTML($radioSelected)
+    {
+        //$this->currentGame = new GameModel($this->testPlayer,1, $this->arrayOfQuestions); //remove for new game
+        $this->currentGame->submitAnswer($radioSelected);
+        return $this->currentView->getNewGameHTML($this->currentGame);
     }
 
 

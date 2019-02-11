@@ -20,6 +20,20 @@ function startGame()
     });
 }
 
+function submitAnswer()
+{
+    let radioSelected = $('input[name=options]:checked').val();
+
+
+    let strURL = "Interface.php?request=submitAnswer&q=" + radioSelected;
+
+    $.get
+    (strURL, function(data)
+    {
+        $('#content').html(data);
+    });
+}
+
 
 function getQuestion()
 {
