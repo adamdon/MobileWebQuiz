@@ -21,16 +21,20 @@ class View
         return "<p>" . $this->model->strAnswer . "</p>";
     }
 
-    public function getNewGameHTML($currentGame)
+    public function getQuestionScreenHTML($currentGame)
     {
         $currentQuestion = $currentGame->arrayOfRounds[1]->questionCorrect->strQuestion;
         $correctAnswer = $currentGame->arrayOfRounds[1]->questionCorrect->strAnswer;
         $wrongAnswerA = $currentGame->arrayOfRounds[1]->questionWrongA->strAnswer;
         $wrongAnswerB = $currentGame->arrayOfRounds[1]->questionWrongB->strAnswer;
+
         $textOfStatus = $currentGame->textOfStatus;
+        $textOfPlayerName = $currentGame->player->username;
+        $textOfTotalRounds = $currentGame->numberOfRoundsToBePlayed;
+        $textOfCurrentRound = (string)$currentGame->numberOfCurrentRound;
+        $textOfScore = $currentGame->numberOfScore;
 
-
-        return '   
+        $stringOfHTML = '   
             <select id="selectQu">
                 <option value="0" selected="selected">Question 1</option>
                 <option value="1">Question 2</option>
@@ -56,8 +60,28 @@ class View
             <button onclick="submitAnswer()" >Submit Answer</button>
             <h3 id="status">Status: ' . $textOfStatus .' </h3>
             
-         </body>
+            <table>
+                <tr>
+                    <td>Player Name:</td>
+                    <td>'. $textOfPlayerName .'</td>
+                </tr>
+                <tr>
+                    <td>Total Rounds:</td>
+                    <td>'. $textOfTotalRounds .'</td>
+                </tr>
+                <tr>
+                    <td>Current Round:</td>
+                    <td'. $textOfCurrentRound .'</td>
+                </tr>
+                <tr>
+                    <td>Score:</td>
+                    <td>'. $textOfScore .'</td>
+                </tr>
+            </table>
+
 	    ';
+
+        return $stringOfHTML;
     }
 
 
