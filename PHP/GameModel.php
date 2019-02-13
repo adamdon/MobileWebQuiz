@@ -19,7 +19,7 @@ class GameModel
         $this->arrayOfQuestions = $arrayOfQuestions;
 
         $this->arrayOfRounds = $this->setupRounds($numberOfRoundsToBePlayed);
-        $this->numberOfCurrentRound = 0;
+        $this->numberOfCurrentRound = 1;
         $this->textOfStatus = "Game Start!";
         $this->numberOfScore = 0;
     }

@@ -44,14 +44,14 @@ class Controller
     public function outputNewGameHTML()
     {
         $this->currentGame = new GameModel($this->testPlayer,1, $this->arrayOfQuestions);
-        return $this->currentView->getNewGameHTML($this->currentGame);
+        return $this->currentView->getQuestionScreenHTML($this->currentGame);
     }
 
     public function outputSubmitAnswerHTML($radioSelected)
     {
         //$this->currentGame = new GameModel($this->testPlayer,1, $this->arrayOfQuestions); //remove for new game
         $this->currentGame->submitAnswer($radioSelected);
-        return $this->currentView->getNewGameHTML($this->currentGame);
+        return $this->currentView->getQuestionScreenHTML($this->currentGame);
     }
 
 
