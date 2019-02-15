@@ -82,12 +82,14 @@ class View
 	    ';
 
         return $stringOfHTML;
+        //return phpinfo();
     }
 
 
     public function getStartSessionHTML()
     {
-        return '   
+        return '
+              
             <button onclick="startGame()" >Start Game!</button>
     
 	    ';

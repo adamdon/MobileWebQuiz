@@ -70,7 +70,7 @@ class GameModel
 
     public function nextRound()
     {
-        $this->numberOfCurrentRound = ($this->numberOfCurrentRound + 1);
+        //$this->numberOfCurrentRound = ($this->numberOfCurrentRound + 1);
     }
 
 
