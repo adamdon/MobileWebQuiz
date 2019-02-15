@@ -31,7 +31,7 @@ class View
         $textOfStatus = $currentGame->textOfStatus;
         $textOfPlayerName = $currentGame->player->username;
         $textOfTotalRounds = $currentGame->numberOfRoundsToBePlayed;
-        $textOfCurrentRound = (string)$currentGame->numberOfCurrentRound;
+        $textOfCurrentRound = (int)$currentGame->numberOfCurrentRound;
         $textOfScore = $currentGame->numberOfScore;
 
         $stringOfHTML = '   
@@ -71,7 +71,7 @@ class View
                 </tr>
                 <tr>
                     <td>Current Round:</td>
-                    <td'. $textOfCurrentRound .'</td>
+                    <td>'. $textOfCurrentRound .'</td>
                 </tr>
                 <tr>
                     <td>Score:</td>
