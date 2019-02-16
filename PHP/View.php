@@ -23,34 +23,18 @@ class View
 
     public function getQuestionScreenHTML($currentGame)
     {
-        $currentQuestion = $currentGame->arrayOfRounds[1]->questionCorrect->strQuestion;
-        $correctAnswer = $currentGame->arrayOfRounds[1]->questionCorrect->strAnswer;
-        $wrongAnswerA = $currentGame->arrayOfRounds[1]->questionWrongA->strAnswer;
-        $wrongAnswerB = $currentGame->arrayOfRounds[1]->questionWrongB->strAnswer;
+        $currentQuestion = $currentGame->arrayOfRounds[0]->questionCorrect->strQuestion;
+        $correctAnswer = $currentGame->arrayOfRounds[0]->questionCorrect->strAnswer;
+        $wrongAnswerA = $currentGame->arrayOfRounds[0]->questionWrongA->strAnswer;
+        $wrongAnswerB = $currentGame->arrayOfRounds[0]->questionWrongB->strAnswer;
 
         $textOfStatus = $currentGame->textOfStatus;
         $textOfPlayerName = $currentGame->player->username;
         $textOfTotalRounds = $currentGame->numberOfRoundsToBePlayed;
-        $textOfCurrentRound = (string)$currentGame->numberOfCurrentRound;
+        $textOfCurrentRound = (int)$currentGame->numberOfCurrentRound;
         $textOfScore = $currentGame->numberOfScore;
 
         $stringOfHTML = '   
-            <select id="selectQu">
-                <option value="0" selected="selected">Question 1</option>
-                <option value="1">Question 2</option>
-                <option value="2">Question 3</option>
-                <option value="3">Question 4</option>
-                <option value="4">Question 5</option>
-            </select>
-    
-            <button onclick="getQuestion()" >Get Question</button>
-            <h3 id="question">question text to be updated</h3>
-    
-            <button onclick="getAnswer()" >Get Answer</button>
-            <h3 id="answer">Answer text to be updated</h3>
-            <p>###############DEBUG##########</p>
-            <br>
-            <br>
             <h3>' . $currentQuestion . ' </h3>
             <form action="">
                   <input type="radio" name="options" value="1">'.$correctAnswer.'<br>
@@ -71,7 +55,7 @@ class View
                 </tr>
                 <tr>
                     <td>Current Round:</td>
-                    <td'. $textOfCurrentRound .'</td>
+                    <td>'. $textOfCurrentRound .'</td>
                 </tr>
                 <tr>
                     <td>Score:</td>
@@ -82,12 +66,14 @@ class View
 	    ';
 
         return $stringOfHTML;
+        //return phpinfo();
     }
 
 
     public function getStartSessionHTML()
     {
-        return '   
+        return '
+              
             <button onclick="startGame()" >Start Game!</button>
     
 	    ';

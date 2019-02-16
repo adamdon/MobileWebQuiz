@@ -27,7 +27,8 @@ class GameModel
     //to-do: make work with more than 1 round via Random()
     public function setupRounds($numberOfRoundsToBePlayed)
     {
-        $arrayOfFilledRounds = array(null);
+        //$arrayOfFilledRounds = array(null);
+        $arrayOfFilledRounds = array();
         for ($index = 0; $index < $numberOfRoundsToBePlayed; $index++)
         {
             $questionCorrect = $this->arrayOfQuestions[0];
@@ -70,7 +71,7 @@ class GameModel
 
     public function nextRound()
     {
-        $this->numberOfCurrentRound = ($this->numberOfCurrentRound + 1);
+        //$this->numberOfCurrentRound = ($this->numberOfCurrentRound + 1);
     }
 
 
