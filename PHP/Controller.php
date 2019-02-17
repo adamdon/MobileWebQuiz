@@ -44,5 +44,10 @@ class Controller
         return $this->currentView->getQuestionScreenHTML($this->currentGame);
     }
 
+    public function outputNextRoundHTML()
+    {
+        $this->currentGame->nextRound();
+        return $this->currentView->getQuestionScreenHTML($this->currentGame);
+    }
 
 }

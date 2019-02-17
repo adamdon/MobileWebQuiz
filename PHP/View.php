@@ -62,10 +62,12 @@ class View
                     <td>'. $textOfScore .'</td>
                 </tr>
             </table>
+            
+            <button onclick="nextRound()" >Next Round</button>
 
 	    ';
 
-        return $stringOfHTML;
+         return $stringOfHTML;
         //return phpinfo();
     }
 
@@ -81,7 +83,8 @@ class View
                 <option value="4">Rounds to play: 4</option>
                 <option value="5">Rounds to play: 5</option>
             </select> 
-            <button onclick="startGame()" >Start Game!</button>
+            </br>
+            <button onclick="startGame()" >Start Game</button>
     
 	    ';
     }

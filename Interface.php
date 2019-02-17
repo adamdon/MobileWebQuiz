@@ -6,10 +6,10 @@ if (!isset($_SESSION["controller"]))
 }
 include 'PHP/Controller.php';
 
-if( (isset($_GET['request'])) && (isset($_GET['q']))  )
+if( (isset($_GET['request'])) && (isset($_GET['p1']))  )
 {
     $passedRequestVar = $_GET['request'];
-    $passedParameterVar = (int)$_GET['q'];
+    $passedParameterVar = (int)$_GET['p1'];
 
     if(empty($_SESSION["controller"]))
     {
@@ -26,6 +26,8 @@ if( (isset($_GET['request'])) && (isset($_GET['q']))  )
         case "newGame": echo $controller->outputNewGameHTML($passedParameterVar);
             break;
         case "submitAnswer": echo $controller->outputSubmitAnswerHTML($passedParameterVar);
+            break;
+        case "nextRound": echo $controller->outputNextRoundHTML();
             break;
         default:
             echo "Error, sorry";

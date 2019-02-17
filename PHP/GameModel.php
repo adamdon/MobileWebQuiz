@@ -55,7 +55,7 @@ class GameModel
             $this->answerWrong();
         }
 
-        $this->nextRound();
+       // $this->nextRound();
     }
 
     public function answerCorrect()
@@ -71,7 +71,7 @@ class GameModel
 
     public function nextRound()
     {
-        //$this->numberOfCurrentRound = ($this->numberOfCurrentRound + 1);
+        $this->numberOfCurrentRound = ($this->numberOfCurrentRound + 1);
     }
 
 
