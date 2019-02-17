@@ -11,7 +11,10 @@ function startSession()
 
 function startGame()
 {
-    let strURL = "Interface.php?request=newGame&q=0";
+    let intRoundsSelectedNum = $('#selectRounds').val();
+    let strRoundsSelectedNum = intRoundsSelectedNum.toString();
+
+    let strURL = "Interface.php?request=newGame&q=" + strRoundsSelectedNum;
 
     $.get
     (strURL, function(data)

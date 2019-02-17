@@ -26,30 +26,20 @@ class Controller
         $this->arrayOfQuestions = $this->dAO->setupQuestions();
     }
 
-    public function GetAnswer($QuestionNumber)
-    {
-        return $this->arrayOfQuestions[$QuestionNumber]->strAnswer;
-    }
-
-    public function GetQuestion($QuestionNumber)
-    {
-        return $this->arrayOfQuestions[$QuestionNumber]->strQuestion;
-    }
 
     public function outputStartSessionHTML()
     {
         return $this->currentView->getStartSessionHTML(); //$cu
     }
 
-    public function outputNewGameHTML()
+    public function outputNewGameHTML($numberOfRoundsToBePlayed)
     {
-        $this->currentGame = new GameModel($this->testPlayer,1, $this->arrayOfQuestions);
+        $this->currentGame = new GameModel($this->testPlayer,$numberOfRoundsToBePlayed, $this->arrayOfQuestions);
         return $this->currentView->getQuestionScreenHTML($this->currentGame);
     }
 
     public function outputSubmitAnswerHTML($radioSelected)
     {
-        //$this->currentGame = new GameModel($this->testPlayer,1, $this->arrayOfQuestions); //remove for new game
         $this->currentGame->submitAnswer($radioSelected);
         return $this->currentView->getQuestionScreenHTML($this->currentGame);
     }

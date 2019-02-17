@@ -23,7 +23,7 @@ if( (isset($_GET['request'])) && (isset($_GET['q']))  )
     {
         case "startSession": echo $controller->outputStartSessionHTML();
             break;
-        case "newGame": echo $controller->outputNewGameHTML();
+        case "newGame": echo $controller->outputNewGameHTML($passedParameterVar);
             break;
         case "submitAnswer": echo $controller->outputSubmitAnswerHTML($passedParameterVar);
             break;

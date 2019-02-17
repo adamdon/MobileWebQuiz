@@ -23,16 +23,16 @@ class View
 
     public function getQuestionScreenHTML($currentGame)
     {
-        $currentQuestion = $currentGame->arrayOfRounds[0]->questionCorrect->strQuestion;
-        $correctAnswer = $currentGame->arrayOfRounds[0]->questionCorrect->strAnswer;
-        $wrongAnswerA = $currentGame->arrayOfRounds[0]->questionWrongA->strAnswer;
-        $wrongAnswerB = $currentGame->arrayOfRounds[0]->questionWrongB->strAnswer;
-
         $textOfStatus = $currentGame->textOfStatus;
         $textOfPlayerName = $currentGame->player->username;
         $textOfTotalRounds = $currentGame->numberOfRoundsToBePlayed;
         $textOfCurrentRound = (int)$currentGame->numberOfCurrentRound;
         $textOfScore = $currentGame->numberOfScore;
+
+        $currentQuestion = $currentGame->arrayOfRounds[$textOfCurrentRound]->questionCorrect->strQuestion;
+        $correctAnswer = $currentGame->arrayOfRounds[$textOfCurrentRound]->questionCorrect->strAnswer;
+        $wrongAnswerA = $currentGame->arrayOfRounds[$textOfCurrentRound]->questionWrongA->strAnswer;
+        $wrongAnswerB = $currentGame->arrayOfRounds[$textOfCurrentRound]->questionWrongB->strAnswer;
 
         $stringOfHTML = '   
             <h3>' . $currentQuestion . ' </h3>
@@ -55,7 +55,7 @@ class View
                 </tr>
                 <tr>
                     <td>Current Round:</td>
-                    <td>'. $textOfCurrentRound .'</td>
+                    <td>'. ($textOfCurrentRound + 1) .'</td>
                 </tr>
                 <tr>
                     <td>Score:</td>
@@ -74,6 +74,13 @@ class View
     {
         return '
               
+            <select id="selectRounds">
+                <option value="1" selected="selected">Rounds to play: 1</option>
+                <option value="2">Rounds to play: 2</option>
+                <option value="3">Rounds to play: 3</option>
+                <option value="4">Rounds to play: 4</option>
+                <option value="5">Rounds to play: 5</option>
+            </select> 
             <button onclick="startGame()" >Start Game!</button>
     
 	    ';
