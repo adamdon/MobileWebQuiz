@@ -35,6 +35,10 @@ html, body {
 	padding-right: 30px;
 }
 
+.navbar a:hover {
+	color: #00ff83 !important;
+}
+
 .nav-link {
 	font-size: 1.1em !important;
 }
@@ -46,7 +50,6 @@ html, body {
 
 .carousel-caption {
 	position: absolute;
-	top: 50%;
 	transform: translateY(-50%);
 }
 
@@ -72,7 +75,8 @@ html, body {
 }
 
 .carousel-caption .btn-primary:hover {
-	background-color: #40892f !important; 
+	background-color: #00ff83 !important;
+	border: 1px solid #40892f !important;
 }
 
 .padding {
@@ -116,6 +120,42 @@ html, body {
 	color: #007bb5;
 }
 
+.fa-facebook:hover,
+.fa-twitter:hover,
+.fa-instagram:hover,
+.fa-youtube:hover,
+.fa-linkedin-in:hover {
+	color: #212529;
+}
+
+footer {
+	background-color: #3f3f3f;
+	color: #d5d5d5;
+}
+
+footer a {
+	text-decoration: none;
+	color: #00ff83;
+
+}
+
+footer a:hover {
+	text-decoration: none;
+	color: #00ff83;
+}
+
+hr.light {
+	border-top: 1px solid #d5d5d5;
+	width: 75%;
+	margin-top: .9rem;
+	margin-bottom: 1rem;
+}
+
+hr.light-100 {
+	border-top: 1px solid #d5d5d5;
+	width: 100%;
+
+}
 body {
 	background-color: #e0e0e0;
 	padding: 0px;
@@ -148,21 +188,41 @@ body {
 
 }
 
-/*
-.interactive-header .col-sm button {
-	background-color: #5ac441;
-	border: 3px solid #40892f;
-	top: 10%;
+.container-fluid {
+	padding: 0px !important;
 }
 
-*/
 /*---Media Queries --*/
 @media (max-width: 992px) {
-
+.social a{
+		font-size: 4em;
+		padding: 2rem;
+	}
   }
+
 @media (max-width: 768px) {
-  
+.carousel-caption  {
+	top: %;
 }
+
+.carousel-caption h1 {
+	font-size: 350%;
+}
+
+.carousel-caption h3 {
+	font-size: 140%
+	font-weight: 400;
+	padding-bottom: 0.2rem;
+}
+.carousel-caption .btn {
+	font-size: 95%;
+	padding: 8px 14px;
+}
+.display-4 {
+	font-size: 200%;
+}
+}
+
 @media (max-width: 576px) {
   
 }
@@ -202,7 +262,7 @@ figure {
   background-size: cover;
   background-position: center center;
   -webkit-transform: translateZ(0);
-          transform: translateZ(0);
+  transform: translateZ(0);
   will-change: transform;
 }
 /*--- Bootstrap Padding Fix --*/
