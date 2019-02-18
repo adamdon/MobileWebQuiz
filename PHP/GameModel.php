@@ -29,7 +29,7 @@ class GameModel
     public function submitAnswer($radioSelected)
     {
         $radioSelected = (int)$radioSelected;
-        if($radioSelected == 1)
+        if($radioSelected == $this->arrayOfRounds[$this->numberOfCurrentRound]->correctRadioNumber)
         {
             $this->answerCorrect();
         }
@@ -57,28 +57,23 @@ class GameModel
         $this->numberOfCurrentRound = ($this->numberOfCurrentRound + 1);
     }
 
-
-    //to-do: make work with more than 1 round via Random()
-    public function setupRounds($numberOfRoundsToBePlayed)
+    //TODO
+    //move to RoundModel when arrayOfRounds is static
+    public function getAnswerTextFromRadioNumber($requestedRadioNumber)
     {
-        //$arrayOfFilledRounds = array(null);
-        $arrayOfFilledRounds = array();
-        for ($index = 0; $index < $numberOfRoundsToBePlayed; $index++)
+        if($this->arrayOfRounds[$this->numberOfCurrentRound]->correctRadioNumber == $requestedRadioNumber)
         {
-            $questionCorrect = $this->arrayOfQuestions[0];
-            $questionWrongA = $this->arrayOfQuestions[1];
-            $questionWrongB = $this->arrayOfQuestions[2];
-
-            $roundToBeAdded = new RoundModel($questionCorrect, $questionWrongA, $questionWrongB);
-            array_push($arrayOfFilledRounds, $roundToBeAdded);
+            return $this->arrayOfRounds[$this->numberOfCurrentRound]->questionCorrect->strAnswer;
         }
-
-        return $arrayOfFilledRounds;
-
+        elseif($this->arrayOfRounds[$this->numberOfCurrentRound]->wrongRadioANumber == $requestedRadioNumber)
+        {
+            return $this->arrayOfRounds[$this->numberOfCurrentRound]->questionWrongA->strAnswer;
+        }
+        elseif($this->arrayOfRounds[$this->numberOfCurrentRound]->wrongRadioBNumber == $requestedRadioNumber)
+        {
+            return $this->arrayOfRounds[$this->numberOfCurrentRound]->questionWrongB->strAnswer;
+        }
     }
-
-
-
 
 
 }

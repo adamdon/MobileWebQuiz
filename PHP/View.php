@@ -30,9 +30,14 @@ class View
         $textOfScore = $currentGame->numberOfScore;
 
         $currentQuestion = $currentGame->arrayOfRounds[$textOfCurrentRound]->questionCorrect->strQuestion;
-        $correctAnswer = $currentGame->arrayOfRounds[$textOfCurrentRound]->questionCorrect->strAnswer;
-        $wrongAnswerA = $currentGame->arrayOfRounds[$textOfCurrentRound]->questionWrongA->strAnswer;
-        $wrongAnswerB = $currentGame->arrayOfRounds[$textOfCurrentRound]->questionWrongB->strAnswer;
+
+//        $RadioTextOne = $currentGame->arrayOfRounds[$textOfCurrentRound]->questionCorrect->strAnswer;
+//        $RadioTextTwo = $currentGame->arrayOfRounds[$textOfCurrentRound]->questionWrongA->strAnswer;
+//        $RadioTextThree = $currentGame->arrayOfRounds[$textOfCurrentRound]->questionWrongB->strAnswer;
+
+        $RadioTextOne = $currentGame->getAnswerTextFromRadioNumber(1);
+        $RadioTextTwo = $currentGame->getAnswerTextFromRadioNumber(2);
+        $RadioTextThree = $currentGame->getAnswerTextFromRadioNumber(3);
 
         $stringOfHTML = '
             </br>
@@ -41,9 +46,9 @@ class View
             </br>   
             <h3>' . $currentQuestion . ' </h3>
             <form action="">
-                  <input type="radio" name="options" value="1">'.$correctAnswer.'<br>
-                  <input type="radio" name="options" value="2">'.$wrongAnswerA.'<br>
-                  <input type="radio" name="options" value="3">'.$wrongAnswerB.'<br>
+                  <input type="radio" name="options" value="1">'.$RadioTextOne.'<br>
+                  <input type="radio" name="options" value="2">'.$RadioTextTwo.'<br>
+                  <input type="radio" name="options" value="3">'.$RadioTextThree.'<br>
             </form>
             <button onclick="submitAnswer()" >Submit Answer</button>
             </br>
