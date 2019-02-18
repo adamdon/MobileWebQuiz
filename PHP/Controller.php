@@ -27,26 +27,36 @@ class Controller
     }
 
 
-    public function outputStartSessionHTML()
+    public function startSession()
     {
         return $this->currentView->getStartSessionHTML(); //$cu
     }
 
-    public function outputNewGameHTML($numberOfRoundsToBePlayed)
+    public function newGame($numberOfRoundsToBePlayed)
     {
         $this->currentGame = new GameModel($this->testPlayer,$numberOfRoundsToBePlayed, $this->arrayOfQuestions);
-        return $this->currentView->getQuestionScreenHTML($this->currentGame);
+        return $this->questionScreenHTML();
     }
 
-    public function outputSubmitAnswerHTML($radioSelected)
+    public function submitAnswer($radioSelected)
     {
         $this->currentGame->submitAnswer($radioSelected);
-        return $this->currentView->getQuestionScreenHTML($this->currentGame);
+        return $this->questionScreenHTML();
     }
 
-    public function outputNextRoundHTML()
+    public function nextRound()
     {
         $this->currentGame->nextRound();
+        return $this->questionScreenHTML();
+    }
+
+
+
+
+    //Private functions here
+    //
+    private function questionScreenHTML()
+    {
         return $this->currentView->getQuestionScreenHTML($this->currentGame);
     }
 

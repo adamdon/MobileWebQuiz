@@ -74,6 +74,11 @@ class GameModel
         $this->numberOfCurrentRound = ($this->numberOfCurrentRound + 1);
     }
 
+    private function questionScreenHTML()
+    {
+        return $this->currentView->getQuestionScreenHTML($this->currentGame);
+    }
+
 
 
 

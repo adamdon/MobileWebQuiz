@@ -21,13 +21,13 @@ if( (isset($_GET['request'])) && (isset($_GET['p1']))  )
 
     switch($passedRequestVar)
     {
-        case "startSession": echo $controller->outputStartSessionHTML();
+        case "startSession": echo $controller->startSession();
             break;
-        case "newGame": echo $controller->outputNewGameHTML($passedParameterVar);
+        case "newGame": echo $controller->newGame($passedParameterVar);
             break;
-        case "submitAnswer": echo $controller->outputSubmitAnswerHTML($passedParameterVar);
+        case "submitAnswer": echo $controller->submitAnswer($passedParameterVar);
             break;
-        case "nextRound": echo $controller->outputNextRoundHTML();
+        case "nextRound": echo $controller->nextRound();
             break;
         default:
             echo "Error, sorry";
