@@ -18,30 +18,13 @@ class GameModel
         $this->numberOfRoundsToBePlayed = $numberOfRoundsToBePlayed;
         $this->arrayOfQuestions = $arrayOfQuestions;
 
-        $this->arrayOfRounds = $this->setupRounds($numberOfRoundsToBePlayed);
+        //$this->arrayOfRounds = $this->setupRounds($numberOfRoundsToBePlayed);
+        $this->arrayOfRounds = RoundModel::setupRounds($numberOfRoundsToBePlayed, $arrayOfQuestions);
         $this->numberOfCurrentRound = 0;
         $this->textOfStatus = "Game Start!";
         $this->numberOfScore = 0;
     }
 
-    //to-do: make work with more than 1 round via Random()
-    public function setupRounds($numberOfRoundsToBePlayed)
-    {
-        //$arrayOfFilledRounds = array(null);
-        $arrayOfFilledRounds = array();
-        for ($index = 0; $index < $numberOfRoundsToBePlayed; $index++)
-        {
-            $questionCorrect = $this->arrayOfQuestions[0];
-            $questionWrongA = $this->arrayOfQuestions[1];
-            $questionWrongB = $this->arrayOfQuestions[2];
-
-            $roundToBeAdded = new RoundModel($questionCorrect, $questionWrongA, $questionWrongB);
-            array_push($arrayOfFilledRounds, $roundToBeAdded);
-        }
-
-        return $arrayOfFilledRounds;
-
-    }
 
     public function submitAnswer($radioSelected)
     {
@@ -74,9 +57,24 @@ class GameModel
         $this->numberOfCurrentRound = ($this->numberOfCurrentRound + 1);
     }
 
-    private function questionScreenHTML()
+
+    //to-do: make work with more than 1 round via Random()
+    public function setupRounds($numberOfRoundsToBePlayed)
     {
-        return $this->currentView->getQuestionScreenHTML($this->currentGame);
+        //$arrayOfFilledRounds = array(null);
+        $arrayOfFilledRounds = array();
+        for ($index = 0; $index < $numberOfRoundsToBePlayed; $index++)
+        {
+            $questionCorrect = $this->arrayOfQuestions[0];
+            $questionWrongA = $this->arrayOfQuestions[1];
+            $questionWrongB = $this->arrayOfQuestions[2];
+
+            $roundToBeAdded = new RoundModel($questionCorrect, $questionWrongA, $questionWrongB);
+            array_push($arrayOfFilledRounds, $roundToBeAdded);
+        }
+
+        return $arrayOfFilledRounds;
+
     }
 
 
