@@ -35,9 +35,9 @@ class View
 //        $RadioTextTwo = $currentGame->arrayOfRounds[$textOfCurrentRound]->questionWrongA->strAnswer;
 //        $RadioTextThree = $currentGame->arrayOfRounds[$textOfCurrentRound]->questionWrongB->strAnswer;
 
-        $RadioTextOne = $currentGame->getAnswerTextFromRadioNumber(1);
-        $RadioTextTwo = $currentGame->getAnswerTextFromRadioNumber(2);
-        $RadioTextThree = $currentGame->getAnswerTextFromRadioNumber(3);
+        $RadioTextOne = $this->getAnswerTextFromRadioNumber(1, $currentGame);
+        $RadioTextTwo = $this->getAnswerTextFromRadioNumber(2, $currentGame);
+        $RadioTextThree = $this->getAnswerTextFromRadioNumber(3, $currentGame);
 
         $stringOfHTML = '
             </br>
@@ -86,7 +86,11 @@ class View
     public function getStartSessionHTML()
     {
         $stringOfHTML = '
-            </br>  
+            </br>
+            </br> 
+            </br> 
+            </br> 
+            </br>   
             <select id="selectRounds">
                 <option value="1" selected="selected">Rounds to play: 1</option>
                 <option value="2">Rounds to play: 2</option>
@@ -155,7 +159,21 @@ class View
 
         return $stringOfHTML;
     }
-    
-    
+
+    public function getAnswerTextFromRadioNumber($requestedRadioNumber, $currentGame)
+    {
+        if($currentGame->arrayOfRounds[$currentGame->numberOfCurrentRound]->correctRadioNumber == $requestedRadioNumber)
+        {
+            return $currentGame->arrayOfRounds[$currentGame->numberOfCurrentRound]->questionCorrect->strAnswer;
+        }
+        elseif($currentGame->arrayOfRounds[$currentGame->numberOfCurrentRound]->wrongRadioANumber == $requestedRadioNumber)
+        {
+            return $currentGame->arrayOfRounds[$currentGame->numberOfCurrentRound]->questionWrongA->strAnswer;
+        }
+        elseif($currentGame->arrayOfRounds[$currentGame->numberOfCurrentRound]->wrongRadioBNumber == $requestedRadioNumber)
+        {
+            return $currentGame->arrayOfRounds[$currentGame->numberOfCurrentRound]->questionWrongB->strAnswer;
+        }
+    }
 
 }
