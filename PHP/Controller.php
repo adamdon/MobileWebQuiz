@@ -3,10 +3,10 @@
 include 'View.php';
 include 'DataAccessObject.php';
 
-include 'QuestionModel.php';
-include 'PlayerModel.php';
-include 'GameModel.php';
-include 'RoundModel.php';
+include 'Models/QuestionModel.php';
+include 'Models/PlayerModel.php';
+include 'Models/GameModel.php';
+include 'Models/RoundModel.php';
 
 class Controller
 {
