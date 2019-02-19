@@ -74,6 +74,7 @@ nav.stroke ul li a:hover:after {
 
 .carousel-caption {
 	position: absolute;
+	top: 50%;
 	transform: translateY(-50%);
 }
 
@@ -168,6 +169,10 @@ footer a:hover {
 	color: #00ff83;
 }
 
+footer .row {
+	margin: 0px;
+}
+
 hr.light {
 	border-top: 1px solid #d5d5d5;
 	width: 75%;
@@ -201,16 +206,9 @@ body {
 }
 
 .navigation-main .navbar-brand img {
-	height: 50px !important;
+	height: 60px !important;
 }
 
-.top-header {
-	padding-top: 71px;
-	font-size: 40px;
-	color: #fff;
-	text-align: center;
-
-}
 
 .container-fluid {
 	padding: 0px !important;
@@ -226,7 +224,8 @@ body {
 
 @media (max-width: 768px) {
 .carousel-caption  {
-	top: %;
+	top: 37%;
+	transform: translateY(-50%);
 }
 
 .carousel-caption h1 {
@@ -294,3 +293,46 @@ figure {
     padding: 1rem;
 }
 
+.divider-text {
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.divider-text span {
+    padding: 7px;
+    font-size: 12px;
+    position: relative;   
+    z-index: 2;
+}
+.divider-text:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    top: 55%;
+    left: 0;
+    z-index: 1;
+}
+
+.btn-facebook {
+    background-color: #405D9D;
+    color: #fff;
+}
+.btn-twitter {
+    background-color: #42AEEC;
+    color: #fff;
+}
+
+.img-fluid.img {
+
+	width: 100% ;
+}
+
+.imgo{
+	position: relative !important;
+}
+
+.boxo{
+	position: absolute !important;
+}
