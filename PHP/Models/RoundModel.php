@@ -12,6 +12,8 @@ class RoundModel
     public $wrongRadioBNumber;
 
     static public $arrayOfUsedInt = [];
+    static public $arrayOfUsedQuestions = [];
+    static public $arrayOfUsedAnswers = [];
 
 
 
@@ -32,10 +34,9 @@ class RoundModel
         for ($index = 0; $index < $numberOfRoundsToBePlayed; $index++)
         {
 
-
-            $questionCorrect = $arrayOfQuestions[0];
-            $questionWrongA = $arrayOfQuestions[1];
-            $questionWrongB = $arrayOfQuestions[2];
+            $questionCorrect = $arrayOfQuestions[self::getRandomQuestionNumber($arrayOfQuestions)];
+            $questionWrongA = $arrayOfQuestions[self::getRandomQuestionNumber($arrayOfQuestions)];
+            $questionWrongB = $arrayOfQuestions[self::getRandomQuestionNumber($arrayOfQuestions)];
 
             $correctRadioNumber = self::GetRandomRadioPositions();
             $wrongRadioANumber = self::GetRandomRadioPositions();
@@ -43,11 +44,33 @@ class RoundModel
 
             $roundToBeAdded = new RoundModel($questionCorrect, $questionWrongA, $questionWrongB, $correctRadioNumber, $wrongRadioANumber, $wrongRadioBNumber);
             array_push($arrayOfFilledRounds, $roundToBeAdded);
+
+            self::$arrayOfUsedInt = []; // clear nums when done
         }
+        self::$arrayOfUsedQuestions = []; //clear used questions for next game
+
 
         return $arrayOfFilledRounds;
-
     }
+
+    static private function getRandomQuestionNumber($arrayOfQuestions)
+    {
+        $intNumberOfQuestion = (sizeof($arrayOfQuestions) - 1);
+
+
+        $intQuestionNumber = mt_rand(1, $intNumberOfQuestion);
+
+        while(in_array($intQuestionNumber, self::$arrayOfUsedQuestions))
+        {
+            $intQuestionNumber = mt_rand(1, $intNumberOfQuestion);
+        }
+
+        array_push(self::$arrayOfUsedQuestions, $intQuestionNumber);
+
+        return $intQuestionNumber;
+    }
+
+
     static private function GetRandomRadioPositions()
     {
         $intRadioPositions = mt_rand(1, 3);
