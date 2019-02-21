@@ -35,19 +35,28 @@ class Controller
     public function newGame($numberOfRoundsToBePlayed)
     {
         $this->currentGame = new GameModel($this->testPlayer,$numberOfRoundsToBePlayed, $this->arrayOfQuestions);
-        return $this->questionScreenHTML();
+        return $this->currentView->getQuestionScreenHTML($this->currentGame);
     }
 
     public function submitAnswer($radioSelected)
     {
         $this->currentGame->submitAnswer($radioSelected);
-        return $this->questionScreenHTML();
+        return $this->currentView->getQuestionScreenHTML($this->currentGame);
     }
 
     public function nextRound()
     {
         $this->currentGame->nextRound();
-        return $this->questionScreenHTML();
+        if($this->currentGame->numberOfCurrentRound < $this->currentGame->numberOfRoundsToBePlayed)
+        {
+            return $this->currentView->getQuestionScreenHTML($this->currentGame);
+        }
+        else
+        {
+            return $this->currentView->getGameFinishedHTML($this->currentGame);
+            //return "game done";
+        }
+
     }
 
 
@@ -55,9 +64,6 @@ class Controller
 
     //Private functions here
     //
-    private function questionScreenHTML()
-    {
-        return $this->currentView->getQuestionScreenHTML($this->currentGame);
-    }
+
 
 }

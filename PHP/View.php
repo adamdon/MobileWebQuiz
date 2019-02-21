@@ -2,42 +2,26 @@
 
 class View
 {
-    private $model;
+    private $currentGame;
 
     public function __construct()
     {
         //$this->model = $model;
-
     }
 
-    public function outputQuestion()
-    {
-        return $this->model->strQuestion;
-        //return "<p>" . $this->model->strQuestion . "</p>";
-    }
-
-    public function outputAnswer()
-    {
-        return "<p>" . $this->model->strAnswer . "</p>";
-    }
 
     public function getQuestionScreenHTML($currentGame)
     {
-        $textOfStatus = $currentGame->textOfStatus;
-        $textOfPlayerName = $currentGame->player->username;
-        $textOfTotalRounds = $currentGame->numberOfRoundsToBePlayed;
-        $textOfCurrentRound = (int)$currentGame->numberOfCurrentRound;
-        $textOfScore = $currentGame->numberOfScore;
+        $this->currentGame = $currentGame;
 
-        $currentQuestion = $currentGame->arrayOfRounds[$textOfCurrentRound]->questionCorrect->strQuestion;
+        $textOfStatus = $this->currentGame->textOfStatus;
+        $textOfCurrentRound = (int)$this->currentGame->numberOfCurrentRound;
+        $currentQuestion = $this->currentGame->arrayOfRounds[$textOfCurrentRound]->questionCorrect->strQuestion;
 
-//        $RadioTextOne = $currentGame->arrayOfRounds[$textOfCurrentRound]->questionCorrect->strAnswer;
-//        $RadioTextTwo = $currentGame->arrayOfRounds[$textOfCurrentRound]->questionWrongA->strAnswer;
-//        $RadioTextThree = $currentGame->arrayOfRounds[$textOfCurrentRound]->questionWrongB->strAnswer;
 
-        $RadioTextOne = $this->getAnswerTextFromRadioNumber(1, $currentGame);
-        $RadioTextTwo = $this->getAnswerTextFromRadioNumber(2, $currentGame);
-        $RadioTextThree = $this->getAnswerTextFromRadioNumber(3, $currentGame);
+        $RadioTextOne = $this->getAnswerTextFromRadioNumber(1, $this->currentGame);
+        $RadioTextTwo = $this->getAnswerTextFromRadioNumber(2, $this->currentGame);
+        $RadioTextThree = $this->getAnswerTextFromRadioNumber(3, $this->currentGame);
 
         $stringOfHTML = '
             </br>
@@ -55,24 +39,7 @@ class View
             </br>
             <h3 id="status">Status: ' . $textOfStatus .' </h3>
             
-            <table>
-                <tr>
-                    <td>Player Name:</td>
-                    <td>'. $textOfPlayerName .'</td>
-                </tr>
-                <tr>
-                    <td>Total Rounds:</td>
-                    <td>'. $textOfTotalRounds .'</td>
-                </tr>
-                <tr>
-                    <td>Current Round:</td>
-                    <td>'. ($textOfCurrentRound + 1) .'</td>
-                </tr>
-                <tr>
-                    <td>Score:</td>
-                    <td>'. $textOfScore .'</td>
-                </tr>
-            </table>
+            '. $this->gameStatsHTML() .'
             
             <button onclick="nextRound()" >Next Round</button>
 
@@ -82,10 +49,34 @@ class View
         //return phpinfo();
     }
 
+    public function getGameFinishedHTML($currentGame)
+    {
+        $this->currentGame = $currentGame;
+
+        $stringOfHTML = '
+        
+
+            '.$this->navigationBarHTML() .'
+            </br>
+            </br>
+            </br>
+            </br>
+            <h3>Game Finished!</h3>
+            '. $this->gameStatsHTML() .'
+         
+         ';
+
+
+        return $stringOfHTML;
+    }
+
+
+
 
     public function getStartSessionHTML()
     {
         $stringOfHTML = '
+            ' . $this->navigationBarHTML() .'
             </br>
             </br> 
             </br> 
@@ -103,7 +94,7 @@ class View
     
 	    ';
 
-        return ($this->navigationBarHTML() . $stringOfHTML);
+        return ($stringOfHTML);
     }
 
 
@@ -112,6 +103,40 @@ class View
 
     //Private functions here
     //
+
+    private function gameStatsHTML()
+    {
+        $textOfPlayerName = $this->currentGame->player->username;
+        $textOfTotalRounds = $this->currentGame->numberOfRoundsToBePlayed;
+        $textOfCurrentRound = (int)$this->currentGame->numberOfCurrentRound;
+        $textOfScore = $this->currentGame->numberOfScore;
+
+
+        $stringOfHTML = '
+                    <table>
+                <tr>
+                    <td>Player Name:</td>
+                    <td>'. $textOfPlayerName .'</td>
+                </tr>
+                <tr>
+                    <td>Total Rounds:</td>
+                    <td>'. $textOfTotalRounds .'</td>
+                </tr>
+                <tr>
+                    <td>Current Round:</td>
+                    <td>'. ($textOfCurrentRound + 1) .'</td>
+                </tr>
+                <tr>
+                    <td>Score:</td>
+                    <td>'. $textOfScore .'</td>
+                </tr>
+            </table>
+        
+        ';
+
+        return $stringOfHTML;
+    }
+
     private function navigationBarHTML()
     {
         $stringOfHTML = ' 
@@ -160,7 +185,7 @@ class View
         return $stringOfHTML;
     }
 
-    public function getAnswerTextFromRadioNumber($requestedRadioNumber, $currentGame)
+    private function getAnswerTextFromRadioNumber($requestedRadioNumber, $currentGame)
     {
         if($currentGame->arrayOfRounds[$currentGame->numberOfCurrentRound]->correctRadioNumber == $requestedRadioNumber)
         {
