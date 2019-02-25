@@ -21,7 +21,7 @@ class Controller
     {
         $this->currentView = new View;
         $this->dAO = new DataAccessObject();
-        $this->testPlayer = new PlayerModel("Jonny5", "pass123");
+        $this->testPlayer = new PlayerModel("jonny5", "pass");
 
         $this->arrayOfQuestions = []; //$this->dAO->setupQuestions();
     }
@@ -29,6 +29,20 @@ class Controller
 
     public function startSession()
     {
+        return $this->currentView->getStartSessionHTML(); //$cu
+    }
+
+    public function logIn($strEmail, $strPassword)
+    {
+        if(($strEmail == $this->testPlayer->username) && ($strPassword == $this->testPlayer->password) )
+        {
+            return $this->currentView->getGameSelectHTML();
+        }
+        else
+        {
+            return $this->currentView->getStartSessionHTML();
+        }
+
         return $this->currentView->getStartSessionHTML(); //$cu
     }
 

@@ -25,6 +25,8 @@ if(isset($_GET['request'], $_GET['p1'], $_GET['p2']) == true)
     {
         case "startSession": echo $controller->startSession();
             break;
+        case "logIn": echo $controller->logIn($passedParameterVar1, $passedParameterVar2);
+            break;
         case "newGame": echo $controller->newGame($passedParameterVar1, $passedParameterVar2);
             break;
         case "submitAnswer": echo $controller->submitAnswer($passedParameterVar1);

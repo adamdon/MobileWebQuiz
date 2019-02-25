@@ -9,6 +9,21 @@ function startSession()
     });
 }
 
+function logIn()
+{
+    let strEmail = $('#email').val();
+    let strPassword= $('#pass').val();
+
+
+    let strURL = "Interface.php?request=logIn&p1=" + strEmail + "&p2=" + strPassword;
+
+    $.get
+    (strURL, function(data)
+    {
+        $('#content').html(data);
+    });
+}
+
 function startGame()
 {
     let intRoundsSelectedNum = $('#selectRounds').val();

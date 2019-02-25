@@ -13,29 +13,15 @@ class View
     {
         $stringOfHTML = '
             </br>
-            </br> 
-            </br> 
-            </br> 
-            </br>   
-            <select id="selectRounds">
-                <option value="1" selected="selected">Rounds to play: 1</option>
-                <option value="2">Rounds to play: 2</option>
-                <option value="3">Rounds to play: 3</option>
-                <option value="4">Rounds to play: 4</option>
-                <option value="5">Rounds to play: 5</option>
-            </select> 
-            </br>
-            </br>   
-            <select id="selectCategory">
-                <option value="Capital Cities" selected="selected">Capital Cities</option>
-                <option value="Movie Quotes">Movie Quotes</option>
-                <option value="null">Null</option>
-                <option value="null">Null</option>
-                <option value="null">Null</option>
-            </select> 
+            <label for="email"><b>Username</b></label>
+            <input type="text" placeholder="Enter Email" id="email" required>
             </br>
             </br>
-            <button onclick="startGame()" >Start Game</button>
+            <label for="pass"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" id="pass" required>
+            </br>
+            </br>
+            <button onclick="logIn()" >Login</button>
     
 	    ';
 
