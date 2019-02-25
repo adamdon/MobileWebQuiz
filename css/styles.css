@@ -85,7 +85,7 @@ nav.stroke ul li a:hover:after {
 }
 
 .carousel-caption h3 {
-	font-size: 200%
+	font-size: 200%;
 	font-weight: 500;
 	text-shadow: 1px 1px 10px #000;
 	padding-bottom: 1rem;
@@ -233,7 +233,7 @@ body {
 }
 
 .carousel-caption h3 {
-	font-size: 140%
+	font-size: 140%;
 	font-weight: 400;
 	padding-bottom: 0.2rem;
 }
@@ -275,8 +275,8 @@ figure {
   height: 100%;
 }
 #fixed {
-  background-image: url('img/mac.png');
-  position: fixed;
+	/*  background-image: url('../images/mac.png'); /*  image to be added to git */
+	position: fixed;
   display: block;
   top: 0;
   left: 0;

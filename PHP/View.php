@@ -9,74 +9,9 @@ class View
         //$this->model = $model;
     }
 
-
-    public function getQuestionScreenHTML($currentGame)
-    {
-        $this->currentGame = $currentGame;
-
-        $textOfStatus = $this->currentGame->textOfStatus;
-        $textOfCurrentRound = (int)$this->currentGame->numberOfCurrentRound;
-        $currentQuestion = $this->currentGame->arrayOfRounds[$textOfCurrentRound]->questionCorrect->strQuestion;
-
-
-        $RadioTextOne = $this->getAnswerTextFromRadioNumber(1, $this->currentGame);
-        $RadioTextTwo = $this->getAnswerTextFromRadioNumber(2, $this->currentGame);
-        $RadioTextThree = $this->getAnswerTextFromRadioNumber(3, $this->currentGame);
-
-        $stringOfHTML = '
-            </br>
-            </br>
-            </br>
-            </br>   
-            <h3>' . $currentQuestion . ' </h3>
-            <form action="">
-                  <input type="radio" name="options" value="1">'.$RadioTextOne.'<br>
-                  <input type="radio" name="options" value="2">'.$RadioTextTwo.'<br>
-                  <input type="radio" name="options" value="3">'.$RadioTextThree.'<br>
-            </form>
-            <button onclick="submitAnswer()" >Submit Answer</button>
-            </br>
-            </br>
-            <h3 id="status">Status: ' . $textOfStatus .' </h3>
-            
-            '. $this->gameStatsHTML() .'
-            
-            <button onclick="nextRound()" >Next Round</button>
-
-	    ';
-
-         return ($this->navigationBarHTML() . $stringOfHTML);
-        //return phpinfo();
-    }
-
-    public function getGameFinishedHTML($currentGame)
-    {
-        $this->currentGame = $currentGame;
-
-        $stringOfHTML = '
-        
-
-            '.$this->navigationBarHTML() .'
-            </br>
-            </br>
-            </br>
-            </br>
-            <h3>Game Finished!</h3>
-            '. $this->gameStatsHTML() .'
-         
-         ';
-
-
-        return $stringOfHTML;
-    }
-
-
-
-
     public function getStartSessionHTML()
     {
         $stringOfHTML = '
-            ' . $this->navigationBarHTML() .'
             </br>
             </br> 
             </br> 
@@ -104,15 +39,90 @@ class View
     
 	    ';
 
-        return ($stringOfHTML);
+        return ($this->navigationBarHTML() . $this->carouselTopHTML() . $stringOfHTML . $this->carouselBottomHTML() . $this->footerHTML());
+    }
+
+
+    public function getGameSelectHTML()
+    {
+        $stringOfHTML = '
+            </br>   
+            <select id="selectRounds">
+                <option value="1" selected="selected">Rounds to play: 1</option>
+                <option value="2">Rounds to play: 2</option>
+                <option value="3">Rounds to play: 3</option>
+                <option value="4">Rounds to play: 4</option>
+                <option value="5">Rounds to play: 5</option>
+            </select> 
+            </br>
+            </br>   
+            <select id="selectCategory">
+                <option value="Capital Cities" selected="selected">Capital Cities</option>
+                <option value="Movie Quotes">Movie Quotes</option>
+                <option value="null">Null</option>
+                <option value="null">Null</option>
+                <option value="null">Null</option>
+            </select> 
+            </br>
+            </br>
+            <button onclick="startGame()" >Start Game</button>
+    
+	    ';
+
+        return ($this->navigationBarHTML() . $this->carouselTopHTML() . $stringOfHTML . $this->carouselBottomHTML() . $this->footerHTML());
+
     }
 
 
 
+    public function getQuestionScreenHTML($currentGame)
+    {
+        $this->currentGame = $currentGame;
+
+        $textOfStatus = $this->currentGame->textOfStatus;
+        $textOfCurrentRound = (int)$this->currentGame->numberOfCurrentRound;
+        $currentQuestion = $this->currentGame->arrayOfRounds[$textOfCurrentRound]->questionCorrect->strQuestion;
 
 
-    //Private functions here
-    //
+        $RadioTextOne = $this->getAnswerTextFromRadioNumber(1, $this->currentGame);
+        $RadioTextTwo = $this->getAnswerTextFromRadioNumber(2, $this->currentGame);
+        $RadioTextThree = $this->getAnswerTextFromRadioNumber(3, $this->currentGame);
+
+        $stringOfHTML = '
+            <h3>' . $currentQuestion . ' </h3>
+            <form action="">
+                  <input type="radio" name="options" value="1">'.$RadioTextOne.'<br>
+                  <input type="radio" name="options" value="2">'.$RadioTextTwo.'<br>
+                  <input type="radio" name="options" value="3">'.$RadioTextThree.'<br>
+            </form>
+            <button onclick="submitAnswer()" >Submit Answer</button>
+            </br>
+            </br>
+            <h3 id="status">Status: ' . $textOfStatus .' </h3>
+            
+            '. $this->gameStatsHTML() .'
+            
+            <button onclick="nextRound()" >Next Round</button>
+
+	    ';
+
+        return ($this->navigationBarHTML() . $this->carouselTopHTML() . $stringOfHTML . $this->carouselBottomHTML() . $this->footerHTML());
+        //return phpinfo();
+    }
+
+
+    public function getGameFinishedHTML($currentGame)
+    {
+        $this->currentGame = $currentGame;
+
+        $stringOfHTML = '
+            </br>
+            <h3>Game Finished!</h3>
+            '. $this->gameStatsHTML() .'     
+         ';
+
+        return ($this->navigationBarHTML() . $this->carouselTopHTML() . $stringOfHTML . $this->carouselBottomHTML() . $this->footerHTML());
+    }
 
     private function gameStatsHTML()
     {
@@ -147,53 +157,134 @@ class View
         return $stringOfHTML;
     }
 
+
+    private function carouselTopHTML()
+    {
+        $stringOfHTML = ' 
+            <div class="container-fluid">
+                <div id="slides" class="carousel slide" data-ride="carousel">
+                    <ul class="carousel-indicators">
+                        <li data-target="#slides" data-slide-to="0" class="active"></li>
+                        <li data-target="#slides" data-slide-to="1"></li>
+                    </ul>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../images/quizhead.jpg">
+                            <div class="carousel-caption">
+        ';
+
+        return $stringOfHTML;
+    }
+
+    private function carouselBottomHTML()
+    {
+        $stringOfHTML = ' 
+						</div>
+					</div>
+					<div class="carousel-item">
+						<img src="../images/hdrs.jpg">
+						<div class="carousel-caption">
+							<h1 class="display-2">FDM Quizes</h1>
+							<h3>Explore the various categories of quizes that we have to offer!</h3>
+							<button type="button" class="btn btn-primary btn-lg">Explore</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        ';
+
+        return $stringOfHTML;
+    }
+
     private function navigationBarHTML()
     {
         $stringOfHTML = ' 
             <div class="header-line">
             </div>
-            <div class="navigation-main">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <div class="navlog">
-                        <a class="navbar-brand" href="Home.html"> <img src="htmls/images/fdm-logo.gif" class="nav-log" alt="FDM Logo"></a>
-                    </div>
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-        
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                      <li class="nav-item active">
-                        <a class="nav-link" href="#"> Home <span class="sr-only">(current)</span></a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="htmls/About.html">About</a>
-                      </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Something else here</a>
+                <div class="navigation-main">
+                    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top stroke">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="Home.html"> <img src="../images/fdm-logo.gif" class="nav-log" alt="FDM Logo"></a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarResponsive">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="Home.html">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="About.html">About</a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="Register.html">Sign Up</a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="Login.html">Sign In</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                      </li>
-                    </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                  </div>
-                </nav>
-                
-            </div>
+                    </nav>
+                </div>
          
         ';
 
         return $stringOfHTML;
     }
+
+    private function footerHTML()
+    {
+        $stringOfHTML = ' 
+            <div class="container-fluid padding">
+                <div class="row welcome text-center">
+                    <div class="col-12">
+                        <h1 class="display-4">Test your limits.</h1>
+                    </div>
+                    <hr>
+                    <div class="col-12">
+                        <p class="lead">We are bringing you a variety of quizes to test your limits. You can choose from our created categories to suit your needs. Have fun while you learn!</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="container-fluid padding">
+                <div class="row text-center padding">
+                    <div class="col-12">
+                        <h2>Follow Us</h2>
+                    </div>
+                    <div class="col-12 social padding">
+                        <a href="https://www.facebook.com/FDMGroup/"><i class="fab fa-facebook"></i></a>
+                        <a href="hhttps://twitter.com/FDMGroup"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/fdm-group"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/fdm_group/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/user/FDMGroupVideos"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+    
+            <footer>
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <h5>For more information about FDM Group, please click the button below:</h5>
+                        <button type="button" class="btn btn-outline-light btn-lg">><a href="https://www.fdmgroup.com/">FDM Group Main Page</a></button>
+                    </div>
+                    <div class="col-12">
+                        <hr class="light-100">
+                        <h5>&copy; FDM Group 2018</h5>
+                    </div>
+                </div>
+            </footer>
+         
+        ';
+
+        return $stringOfHTML;
+    }
+
+
+
 
 
     //might move this to a static method in round
