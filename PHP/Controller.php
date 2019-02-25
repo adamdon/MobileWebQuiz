@@ -23,7 +23,7 @@ class Controller
         $this->dAO = new DataAccessObject();
         $this->testPlayer = new PlayerModel("Jonny5", "pass123");
 
-        $this->arrayOfQuestions = $this->dAO->setupQuestions();
+        $this->arrayOfQuestions = []; //$this->dAO->setupQuestions();
     }
 
 
@@ -32,9 +32,10 @@ class Controller
         return $this->currentView->getStartSessionHTML(); //$cu
     }
 
-    public function newGame($numberOfRoundsToBePlayed)
+    public function newGame($numberOfRoundsToBePlayed, $strCategorySelected)
     {
-        $this->currentGame = new GameModel($this->testPlayer,$numberOfRoundsToBePlayed, $this->arrayOfQuestions);
+        $this->arrayOfQuestions = $this->dAO->setupQuestions($strCategorySelected);
+        $this->currentGame = new GameModel($this->testPlayer, $numberOfRoundsToBePlayed, $this->arrayOfQuestions);
         return $this->currentView->getQuestionScreenHTML($this->currentGame);
     }
 
@@ -53,8 +54,9 @@ class Controller
         }
         else
         {
+            //$this->currentGame = null; //null to save on session memory later on
             return $this->currentView->getGameFinishedHTML($this->currentGame);
-            //return "game done";
+
         }
 
     }

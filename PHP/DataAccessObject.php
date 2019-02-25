@@ -9,11 +9,16 @@ class DataAccessObject
 
     }
 
-    public function setupQuestions()
+    public function setupQuestions($strCategorySelected)
     {
-
-
-        return $this->CapitalCityQuestions();
+        if ($strCategorySelected == "Capital Cities")
+        {
+            return $this->CapitalCityQuestions();
+        }
+        elseif ($strCategorySelected == "Movie Quotes")
+        {
+            return $this->MovieQuoteQuestions();
+        }
     }
 
 
@@ -48,6 +53,38 @@ class DataAccessObject
         array_push($arrayOfQuestions, $question11);
         array_push($arrayOfQuestions, $question12);
         array_push($arrayOfQuestions, $question13);
+
+        return $arrayOfQuestions;
+    }
+
+    private function MovieQuoteQuestions()
+    {
+        $arrayOfQuestions = [];
+
+        $question1 = new QuestionModel("We're Gonna Need a Bigger Boat", "Jaws");
+        $question2 = new QuestionModel("Luke, I am Your Father", "Star Wars");
+        $question3 = new QuestionModel("Roads? Where we're going, we don't need roads", "Back to the Future");
+        $question4 = new QuestionModel("Hasta la vista, baby", "Terminator 2");
+        $question5 = new QuestionModel("You shall not pass", "Lord of the Rings");
+        $question6 = new QuestionModel("Heeere's Johnny!", "The Shining");
+        $question7 = new QuestionModel("Life is like a box of chocolates", "Forest Gump");
+        $question8 = new QuestionModel("Why so serious?", "The Dark Knight");
+        $question9 = new QuestionModel("There's no place like home", "The Wizard of Oz");
+        $question10 = new QuestionModel("Yer a wizard, Harry", "Harry Potter");
+        $question11 = new QuestionModel("Wanna play a game?", "Saw");
+
+        array_push($arrayOfQuestions, $question1);
+        array_push($arrayOfQuestions, $question2);
+        array_push($arrayOfQuestions, $question3);
+        array_push($arrayOfQuestions, $question4);
+        array_push($arrayOfQuestions, $question5);
+        array_push($arrayOfQuestions, $question6);
+        array_push($arrayOfQuestions, $question7);
+        array_push($arrayOfQuestions, $question8);
+        array_push($arrayOfQuestions, $question9);
+        array_push($arrayOfQuestions, $question10);
+        array_push($arrayOfQuestions, $question11);
+
 
         return $arrayOfQuestions;
     }

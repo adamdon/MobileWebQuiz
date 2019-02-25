@@ -90,6 +90,16 @@ class View
                 <option value="5">Rounds to play: 5</option>
             </select> 
             </br>
+            </br>   
+            <select id="selectCategory">
+                <option value="Capital Cities" selected="selected">Capital Cities</option>
+                <option value="Movie Quotes">Movie Quotes</option>
+                <option value="null">Null</option>
+                <option value="null">Null</option>
+                <option value="null">Null</option>
+            </select> 
+            </br>
+            </br>
             <button onclick="startGame()" >Start Game</button>
     
 	    ';
@@ -185,6 +195,8 @@ class View
         return $stringOfHTML;
     }
 
+
+    //might move this to a static method in round
     private function getAnswerTextFromRadioNumber($requestedRadioNumber, $currentGame)
     {
         if($currentGame->arrayOfRounds[$currentGame->numberOfCurrentRound]->correctRadioNumber == $requestedRadioNumber)

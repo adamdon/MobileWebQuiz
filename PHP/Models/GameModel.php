@@ -54,6 +54,7 @@ class GameModel
 
     public function nextRound()
     {
+        $this->textOfStatus = ("Next Question");
         $this->numberOfCurrentRound = ($this->numberOfCurrentRound + 1);
     }
 
