@@ -10,6 +10,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Kotta+One%7CCantarell:400,700" />
+	<link rel="stylesheet" type="text/css" href="../css/auth.min.css" />
 	<title>Sign Up | FDM Quizes</title>
 </head>
 <body>
@@ -43,51 +44,55 @@
 		</div>
 		<div class="container-fluid">
 			<div class="container">
-			<div class="card bg-light">
-				<article class="card-body mx-auto" style="max-width: 400px;">
-					<h4 class="card-title mt-3 text-center">Create Account</h4>
-					<p class="text-center">Get started with your free account</p>
-					<p>
-						<a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
-						<a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
-					</p>
-					<p class="divider-text">
-				        <span class="bg-light">OR</span>
-				    </p>
-					<form>
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-							    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-							 </div>
-					        <input name="" class="form-control" placeholder="Full name" type="text">
-					    </div> <!-- form-group// -->
-					    <div class="form-group input-group">
-					    	<div class="input-group-prepend">
-							    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-							 </div>
-					        <input name="" class="form-control" placeholder="Email address" type="email">
-					    </div> <!-- form-group// -->
-					    <div class="form-group input-group">
-					    	<div class="input-group-prepend">
-							    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+				<div class="card bg-light">
+					<article class="card-body mx-auto black-gradient" style="max-width: 400px;">
+						<h4 class="card-title mt-3 text-center">Create Account</h4>
+						<form class="auth auth-bg">
+							<div class="input-group first-name">
+								<label class="input-label">First name</label>
+								<div class="input">
+									<i class="fa fa-user"></i>
+									<input name="" class="form-control" placeholder="" type="text">
+								</div>
 							</div>
-					        <input class="form-control" placeholder="Create password" type="password">
-					    </div> <!-- form-group// -->
-					    <div class="form-group input-group">
-					    	<div class="input-group-prepend">
-							    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+							<div class="input-group last-name">
+								<label class="input-label">Last name</label>
+								<div class="input">
+									<i class="fa fa-user"></i>
+									<input name="" class="form-control" placeholder="" type="text">
+								</div>
 							</div>
-					        <input class="form-control" placeholder="Repeat password" type="password">
-					    </div> <!-- form-group// -->                                      
-					    <div class="form-group">
-					        <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
-					    </div> <!-- form-group// -->      
-					    <p class="text-center">Have an account? <a href="Login.html">Log In</a></p>
-				    </form>
-				</article>
-			</div> <!-- card.// -->
-		</div> 
-	</div>
+							<div class="input-group email-address">
+								<label class="input-label">E-Mail Address</label>
+								<div class="input">
+									<i class="fa fa-envelope"></i>
+									<input name="" class="form-control" placeholder="" type="text">
+								</div>
+							</div>
+							<div class="input-group password">
+								<label class="input-label">Password</label>
+								<div class="input">
+									<i class="fa fa-lock"></i>
+									<input name="" class="form-control" placeholder="" type="password">
+								</div>
+							</div>
+							<div class="input-group confirm-password">
+								<label class="input-label">Confirm Password</label>
+								<div class="input">
+									<i class="fa fa-lock"></i>
+									<input name="" class="form-control" placeholder="" type="password">
+								</div>
+							</div>
+							<button class="form-reset btn btn-primary"><i class="fa fa-redo-alt"></i></button>
+							<div class="form-bottom">
+								<span class="have-account">Have an account? <a href="Login.html">Log In</a></span>
+								<button type="submit" class="btn btn-primary btn-block">SIGN UP</button>
+							</div>		
+						</form>					
+					</article>
+				</div>
+			</div> 
+		</div>
 <!--container end.//-->
 		<footer>
 			<div class="row text-center">

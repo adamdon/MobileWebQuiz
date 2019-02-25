@@ -1,0 +1,159 @@
+.black-gradient {
+  background: linear-gradient(to bottom, #343a40, black);
+  color: white;
+}
+
+.auth-bg {
+  width: 274px;
+  height: 454px;
+  background: url("../images/auth-bg.png") no-repeat;
+  background-position: left center;
+  background-size: cover;
+  padding: 10px 20px 10px 20px;
+}
+
+form.auth {
+  position: relative;
+  /* login screen */
+  /* end of login screen */
+  /* auth */
+  /* end of auth */
+}
+
+form.auth .get-started {
+  display: block;
+  color: #343a40;
+  font-size: 12px;
+  text-align: center;
+}
+
+form.auth .auth-alternative {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  margin: 4px 0 4px 0;
+}
+
+form.auth .auth-alternative button {
+  flex: 1;
+  background: none;
+  padding: 2px 6px 2px 6px;
+  outline: none;
+  margin: 0 2px 0 2px;
+}
+
+form.auth .auth-alternative button:focus, form.auth .auth-alternative button:active {
+  background: none !important;
+}
+
+form.auth .auth-alternative button.twitter {
+  border: 1px solid #00aced;
+  color: #00aced !important;
+}
+
+form.auth .auth-alternative button.twitter:hover {
+  border-color: #54d0ff;
+  color: #54d0ff !important;
+}
+
+form.auth .auth-alternative button.twitter:hover i {
+  color: #54d0ff !important;
+}
+
+form.auth .auth-alternative button.facebook {
+  border: 1px solid #3b5998;
+  color: #3b5998 !important;
+}
+
+form.auth .auth-alternative button.facebook:hover {
+  border-color: #718dc8;
+  color: #718dc8 !important;
+}
+
+form.auth .auth-alternative button.facebook:hover i {
+  color: #718dc8 !important;
+}
+
+form.auth .auth-alternative button i {
+  margin-right: 5px;
+  transition: color .15s linear;
+}
+
+form.auth .divider-text {
+  color: #343a40;
+}
+
+form.auth .divider-text:after {
+  border-color: #343a40;
+}
+
+form.auth .input-group {
+  color: #343a40;
+  border-bottom: 1px solid #343a40;
+  margin: 2px 0 4px 0;
+  padding: 2px 0 2px 0;
+}
+
+form.auth .input-group .input-label {
+  position: absolute;
+  font-size: 14px;
+}
+
+form.auth .input-group .input {
+  display: flex;
+  align-items: center;
+  padding-top: 22px;
+}
+
+form.auth .input-group .input input {
+  outline: none;
+  border: none;
+  height: 20px;
+  font-size: 14px;
+}
+
+form.auth .input-group .input input:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+form.auth .form-reset {
+  position: absolute;
+  right: 15px;
+  bottom: 130px;
+  background: linear-gradient(to bottom, #343a40, black);
+  border-radius: 50px;
+  border: none;
+  outline: none;
+}
+
+form.auth .form-reset i {
+  color: white;
+  padding: 0 4px 0 4px;
+}
+
+form.auth .form-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  padding: 0 20px 0 20px;
+  text-align: center;
+}
+
+form.auth .form-bottom .have-account, form.auth .form-bottom .forgot-account {
+  color: #343a40;
+  font-size: 14px;
+}
+
+form.auth .form-bottom .have-account span, form.auth .form-bottom .forgot-account span {
+  display: block;
+}
+
+form.auth .form-bottom button {
+  margin-top: 10px;
+  border-color: #343a40;
+  border-radius: 50px;
+  background: linear-gradient(to bottom, #343a40, black);
+}
