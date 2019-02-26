@@ -29,9 +29,14 @@ class View
     }
 
 
-    public function getGameSelectHTML()
+    public function getGameSelectHTML($currentPlayer)
     {
+        $currentUserName = $currentPlayer->username;
+
         $stringOfHTML = '
+            </br>
+            <h3>Welcome back '. $currentUserName .'</h3>
+            </br>
             </br>   
             <select id="selectRounds">
                 <option value="1" selected="selected">Rounds to play: 1</option>

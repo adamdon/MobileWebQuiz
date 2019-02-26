@@ -2,6 +2,7 @@
 
 include 'View.php';
 include 'DataAccessObject.php';
+include 'Helpers/LoginHelper.php';
 
 include 'Models/QuestionModel.php';
 include 'Models/PlayerModel.php';
@@ -16,6 +17,7 @@ class Controller
     public $currentGame;
     public $currentView;
     public $dAO;
+    public $loginHelper;
 
     public function __construct()  //$model, $view)
     {
@@ -24,26 +26,36 @@ class Controller
         $this->testPlayer = new PlayerModel("jonny5", "pass");
 
         $this->arrayOfQuestions = []; //$this->dAO->setupQuestions();
+        $this->loginHelper = null;
     }
 
 
     public function startSession()
     {
-        return $this->currentView->getStartSessionHTML(); //$cu
+        if($this->loginHelper == null)
+        {
+            return $this->currentView->getStartSessionHTML(); // returns login screen if not logged in
+        }
+        else
+        {
+            return $this->currentView->getGameSelectHTML(); //returns game select if logged in
+        }
+
+
     }
 
     public function logIn($strEmail, $strPassword)
     {
         if(($strEmail == $this->testPlayer->username) && ($strPassword == $this->testPlayer->password) )
         {
-            return $this->currentView->getGameSelectHTML();
+            $this->loginHelper = new LoginHelper($this->testPlayer);
+            return $this->currentView->getGameSelectHTML($this->loginHelper->playerLoggedIn);
         }
         else
         {
             return $this->currentView->getStartSessionHTML();
         }
 
-        return $this->currentView->getStartSessionHTML(); //$cu
     }
 
     public function newGame($numberOfRoundsToBePlayed, $strCategorySelected)
