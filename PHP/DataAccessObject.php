@@ -9,7 +9,12 @@ class DataAccessObject
 
     }
 
-    public function setupQuestions($strCategorySelected)
+
+
+
+
+
+    public function getQuestions($strCategorySelected)
     {
         if ($strCategorySelected == "Capital Cities")
         {
@@ -87,6 +92,23 @@ class DataAccessObject
 
 
         return $arrayOfQuestions;
+    }
+
+
+    public function getPlayers()
+    {
+        $arrayOfPlayers = [];
+
+        $testPlayer1 = new PlayerModel("john", "pass", false);
+        $testPlayer2 = new PlayerModel("jane", "pass", false);
+        $testPlayer3 = new PlayerModel("boss", "pass", true);
+
+        array_push($arrayOfPlayers, $testPlayer1);
+        array_push($arrayOfPlayers, $testPlayer2);
+        array_push($arrayOfPlayers, $testPlayer3);
+
+
+        return $arrayOfPlayers;
     }
 
 }

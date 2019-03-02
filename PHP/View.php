@@ -9,7 +9,7 @@ class View
         //$this->model = $model;
     }
 
-    public function getStartSessionHTML()
+    public function getLoginScreenHTML()
     {
         $stringOfHTML = '
             </br>

@@ -12,7 +12,7 @@ include 'Models/RoundModel.php';
 class Controller
 {
     public $arrayOfQuestions;
-    public $testPlayer;
+    public $arrayOfPlayers;
 
     public $currentGame;
     public $currentView;
@@ -23,53 +23,61 @@ class Controller
     {
         $this->currentView = new View;
         $this->dAO = new DataAccessObject();
-        $this->testPlayer = new PlayerModel("jonny5", "pass");
+        $this->loginHelper = new LoginHelper();
 
+
+        $this->currentGame = (object)[];
         $this->arrayOfQuestions = []; //$this->dAO->setupQuestions();
-        $this->loginHelper = null;
+        $this->arrayOfPlayers = $this->dAO->getPlayers();
+
     }
 
 
-    public function startSession()
+    public function startSession() //first method ran from body onload
     {
-        if($this->loginHelper == null)
+        if($this->loginHelper->isPlayerLoggedIn == true) //check to see if loginHelper has a user logged in already
         {
-            return $this->currentView->getStartSessionHTML(); // returns login screen if not logged in
+            return $this->currentView->getGameSelectHTML($this->loginHelper->playerLoggedIn); //returns game select if logged in
         }
         else
         {
-            return $this->currentView->getGameSelectHTML(); //returns game select if logged in
+            return $this->currentView->getLoginScreenHTML(); // returns login screen if not logged in
         }
-
-
     }
+
+
 
     public function logIn($strEmail, $strPassword)
     {
-        if(($strEmail == $this->testPlayer->username) && ($strPassword == $this->testPlayer->password) )
+        if( ($this->loginHelper->isLoginValid($this->arrayOfPlayers, $strEmail, $strPassword)) == true)
         {
-            $this->loginHelper = new LoginHelper($this->testPlayer);
             return $this->currentView->getGameSelectHTML($this->loginHelper->playerLoggedIn);
         }
         else
         {
-            return $this->currentView->getStartSessionHTML();
+            return $this->currentView->getLoginScreenHTML();
         }
 
     }
 
+
+
     public function newGame($numberOfRoundsToBePlayed, $strCategorySelected)
     {
-        $this->arrayOfQuestions = $this->dAO->setupQuestions($strCategorySelected);
-        $this->currentGame = new GameModel($this->testPlayer, $numberOfRoundsToBePlayed, $this->arrayOfQuestions);
+        $this->arrayOfQuestions = $this->dAO->getQuestions($strCategorySelected);
+        $this->currentGame = new GameModel($this->loginHelper->playerLoggedIn, $numberOfRoundsToBePlayed, $this->arrayOfQuestions);
         return $this->currentView->getQuestionScreenHTML($this->currentGame);
     }
+
+
 
     public function submitAnswer($radioSelected)
     {
         $this->currentGame->submitAnswer($radioSelected);
         return $this->currentView->getQuestionScreenHTML($this->currentGame);
     }
+
+
 
     public function nextRound()
     {
