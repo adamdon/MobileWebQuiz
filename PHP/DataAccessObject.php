@@ -3,10 +3,13 @@
 
 class DataAccessObject
 {
+    public $arrayOfPlayers;
+    public $arrayOfQuestions;
 
     public function __construct()
     {
-
+        $this->arrayOfPlayers = [];
+        $this->arrayOfQuestions = [];
     }
 
 
@@ -107,8 +110,8 @@ class DataAccessObject
         array_push($arrayOfPlayers, $testPlayer2);
         array_push($arrayOfPlayers, $testPlayer3);
 
-
-        return $arrayOfPlayers;
+        $this->arrayOfPlayers = $arrayOfPlayers;
+        return $this->arrayOfPlayers;
     }
 
 }

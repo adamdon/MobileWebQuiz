@@ -41,6 +41,27 @@ function nextRound()
     requestContent(strURL);
 }
 
+function loadRegisterPage()
+{
+    let strURL = "Interface.php?request=loadRegisterPage&p1=0&p2=0";
+
+    requestContent(strURL);
+}
+
+function registerNewDetails()
+{
+    let strEmailReg = $('#email').val();
+    let strPasswordReg = $('#pass1').val();
+
+    let strURL = "Interface.php?request=registerNewDetails&p1=" + strEmailReg + "&p2=" + strPasswordReg;
+
+
+    requestContent(strURL);
+}
+
+
+
+
 function requestContent(strURL)
 {
     $.get

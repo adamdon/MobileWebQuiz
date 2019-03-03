@@ -18,11 +18,11 @@ class LoginHelper
         {
             if( ($strEmail == $playerIndex->username) && ($strPassword == $playerIndex->password) )
             {
-                $isPlayerLoggedIn = true;
+                $this->isPlayerLoggedIn = true;
                 $this->playerLoggedIn = $playerIndex;
                 $this->timeLoggedIn = date('Y/m/d H:i:s');
 
-                return $isPlayerLoggedIn;
+                return $this->isPlayerLoggedIn;
             }
 //            else
 //            {
