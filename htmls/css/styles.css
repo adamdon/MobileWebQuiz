@@ -18,7 +18,10 @@ Extra (xl) large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
 */
 
-
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
 html, body {
 	height: 100%;
@@ -398,12 +401,20 @@ figure {
 	background-color: transparent !important;
 }
 
-.login{
+.login {
 	padding: 40px;
 	margin-top: 20rem;
 	background: #191919 !important;
 	border: 2px solid #2ecc71 !important;
-	text-align: center;
+  text-align: center;
+  
+  opacity: 0;
+  animation: fadeIn .8s ease forwards;
+}
+
+.login > * {
+  opacity: 0;
+  animation: fadeIn .4s ease .8s forwards;
 }
 
 .login input[type = "text"],.login input[type = "password"]{
