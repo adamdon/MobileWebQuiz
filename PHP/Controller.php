@@ -51,6 +51,7 @@ class Controller
         }
     }
 
+
     public function loadRegisterPage()
     {
         return $this->currentView->getRegisterScreenHTML();
@@ -71,11 +72,10 @@ class Controller
 
     }
 
-    //TODO move logic to loginHelper
     public function registerNewDetails($strEmail, $strPassword)
     {
-        $testPlayer1 = new PlayerModel($strEmail, $strPassword, false);
-        array_push($this->arrayOfPlayers, $testPlayer1);
+        $this->arrayOfPlayers = $this->loginHelper->registerNewDetailsToPlayers($this->arrayOfPlayers, $strEmail, $strPassword);
+
         return $this->loadLogin();
     }
 
@@ -111,7 +111,6 @@ class Controller
             return $this->currentView->getGameFinishedHTML($this->currentGame);
 
         }
-
     }
 
 

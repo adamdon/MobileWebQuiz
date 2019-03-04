@@ -36,6 +36,15 @@ class LoginHelper
     }
 
 
+    public function registerNewDetailsToPlayers($arrayOfPlayers, $strEmail, $strPassword)
+    {
+        $NewPlayer = new PlayerModel($strEmail, $strPassword, false);
+        array_push($arrayOfPlayers, $NewPlayer);
+
+        return $arrayOfPlayers;
+    }
+
+
 
 
 
