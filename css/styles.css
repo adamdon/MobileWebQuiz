@@ -18,7 +18,10 @@ Extra (xl) large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
 */
 
-
+@keyframes fadeIn {
+	from { opacity: 0 };
+	to { opacity: 1 };
+}
 
 html, body {
 	height: 100%;
@@ -335,4 +338,10 @@ figure {
 
 .boxo{
 	position: absolute !important;
+}
+
+.card .login {
+	opacity: 0;
+
+	animation: fadeIn .4s ease forwards;
 }
