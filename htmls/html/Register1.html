@@ -6,9 +6,10 @@
 	<link rel="stylesheet" type="text/css" href="../css/styles.css"/>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"/>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	<script src="../../JavaScript/fx.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Kotta+One%7CCantarell:400,700" />
 	<title>Sign Up | FDM Quizes</title>
@@ -40,54 +41,39 @@
 			  		</div>
 				</div>
 			</nav>
-		<div class="container-fluid">
-			<div class="container">
-			<div class="card bg-light">
-				<article class="card-body mx-auto" style="max-width: 400px;">
-					<h4 class="card-title mt-3 text-center">Create Account</h4>
-					<p class="text-center">Get started with your free account</p>
-					<p>
-						<a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
-						<a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
-					</p>
-					<p class="divider-text">
-				        <span class="bg-light">OR</span>
-				    </p>
-					<form>
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-							    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-							 </div>
-					        <input name="" class="form-control" placeholder="Full name" type="text">
-					    </div> <!-- form-group// -->
-					    <div class="form-group input-group">
-					    	<div class="input-group-prepend">
-							    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-							 </div>
-					        <input name="" class="form-control" placeholder="Email address" type="email">
-					    </div> <!-- form-group// -->
-					    <div class="form-group input-group">
-					    	<div class="input-group-prepend">
-							    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+			<div class="container-fluid galax">
+				<div class="d-flex justify-content-center">
+					<div class="card">
+						<form class="login" action="index.html" method="post">
+							<h1>Sign Up</h1>
+							<hr class="light-100">
+							<div class="form-group col">
+								<input type="text" name="" placeholder="Username">
 							</div>
-					        <input class="form-control" placeholder="Create password" type="password">
-					    </div> <!-- form-group// -->
-					    <div class="form-group input-group">
-					    	<div class="input-group-prepend">
-							    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+							<div class="form-group col">
+								<input type="password" name="" placeholder="E-Mail Address">
 							</div>
-					        <input class="form-control" placeholder="Repeat password" type="password">
-					    </div> <!-- form-group// -->                                      
-					    <div class="form-group">
-					        <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
-					    </div> <!-- form-group// -->      
-					    <p class="text-center">Have an account? <a href="">Log In</a></p>
-				    </form>
-				</article>
-			</div> <!-- card.// -->
-		</div> 
-	</div>
-<!--container end.//-->
+							<div class="form-group col">
+								<input type="password" name="" placeholder="Password">
+							</div>
+							<div class="form-group col">
+								<input type="password" name="" placeholder="Confirm Password">
+							</div>
+							<div class="form-group col">
+								<input type="submit" name="" value="Sign Up">
+							</div>
+							<div class="card-footer">>
+									<p class="text-center">Already have an account?</p>
+									<a href="#">Log In</a>
+								<div class="d-flex justify-content-center">
+									<a href="#">Forgot your password?</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+<!--container end 
 		<footer class="footer">
 			<div class="row text-center">
 				<div class="col-md-12">
@@ -99,7 +85,7 @@
 					<h5>&copy; FDM Group 2018</h5>
 				</div>
 			</div>
-		</footer>
+		</footer>-->
 
 </body>
 </html>
