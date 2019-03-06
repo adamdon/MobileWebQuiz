@@ -9,9 +9,11 @@ class View
         //$this->model = $model;
     }
 
-    public function getStartSessionHTML()
+    public function getLoginScreenHTML()
     {
         $stringOfHTML = '
+            
+            
             </br>
             <label for="email"><b>Username</b></label>
             <input type="text" placeholder="Enter Email" id="email" required>
@@ -21,7 +23,33 @@ class View
             <input type="password" placeholder="Enter Password" id="pass" required>
             </br>
             </br>
-            <button onclick="logIn()" >Login</button>
+            </br>
+            <button onclick="logIn()" >Login with details</button>
+            </br>
+            </br>
+            <button onclick="loadRegisterPage()">Register a new account</button>
+    
+	    ';
+
+        return ($this->navigationBarHTML() . $this->carouselTopHTML() . $stringOfHTML . $this->carouselBottomHTML() . $this->footerHTML());
+    }
+
+    public function getRegisterScreenHTML()
+    {
+        $stringOfHTML = '
+            </br>
+            <label for="email"><b>Set Username</b></label>
+            <input type="text" placeholder="Enter a username" id="email" required>
+            </br>
+            </br>
+            <label for="pass1"><b>Password</b></label>
+            <input type="password" placeholder="Enter password" id="pass1" required>
+            </br>
+            <label for="pass2"><b>Password</b></label>
+            <input type="password" placeholder="Confirm Password" id="pass2" required>
+            </br>
+            </br>
+            <button onclick="registerNewDetails()">Register</button>
     
 	    ';
 
@@ -29,9 +57,14 @@ class View
     }
 
 
-    public function getGameSelectHTML()
+    public function getGameSelectHTML($currentPlayer)
     {
+        $currentUserName = $currentPlayer->username;
+
         $stringOfHTML = '
+            </br>
+            <h3>Welcome back '. $currentUserName .'</h3>
+            </br>
             </br>   
             <select id="selectRounds">
                 <option value="1" selected="selected">Rounds to play: 1</option>
@@ -202,7 +235,7 @@ class View
                                         <a class="nav-link" href="Home.html">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="About.html">About</a>
+                                        <a class="nav-link" onclick="logOut()">LogOut</a>
                                     </li>
                                     <li class="nav-item ">
                                         <a class="nav-link" href="Register.html">Sign Up</a>

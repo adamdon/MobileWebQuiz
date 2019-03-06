@@ -2,6 +2,7 @@
 
 include 'View.php';
 include 'DataAccessObject.php';
+include 'Helpers/LoginHelper.php';
 
 include 'Models/QuestionModel.php';
 include 'Models/PlayerModel.php';
@@ -11,53 +12,102 @@ include 'Models/RoundModel.php';
 class Controller
 {
     public $arrayOfQuestions;
-    public $testPlayer;
+    public $arrayOfPlayers;
 
     public $currentGame;
+
     public $currentView;
     public $dAO;
+    public $loginHelper;
 
     public function __construct()  //$model, $view)
     {
         $this->currentView = new View;
         $this->dAO = new DataAccessObject();
-        $this->testPlayer = new PlayerModel("jonny5", "pass");
+        $this->loginHelper = new LoginHelper();
 
+
+        $this->currentGame = (object)[];
         $this->arrayOfQuestions = []; //$this->dAO->setupQuestions();
+        $this->arrayOfPlayers = $this->dAO->getPlayers();
+
     }
 
 
-    public function startSession()
+    public function startSession() //first method ran from body onload
     {
-        return $this->currentView->getStartSessionHTML(); //$cu
+        return $this->loadLogin();
     }
 
-    public function logIn($strEmail, $strPassword)
+
+    public function loadLogin()
     {
-        if(($strEmail == $this->testPlayer->username) && ($strPassword == $this->testPlayer->password) )
+        if($this->loginHelper->isPlayerLoggedIn == true) //check to see if loginHelper has a user logged in already
         {
-            return $this->currentView->getGameSelectHTML();
+            return $this->currentView->getGameSelectHTML($this->loginHelper->playerLoggedIn); //returns game select if logged in
         }
         else
         {
-            return $this->currentView->getStartSessionHTML();
+            return $this->currentView->getLoginScreenHTML(); // returns login screen if not logged in
+        }
+    }
+
+
+    public function loadRegisterPage()
+    {
+        return $this->currentView->getRegisterScreenHTML();
+    }
+
+
+
+    public function logInUser($strEmail, $strPassword) //called when login button submits
+    {
+        if( ($this->loginHelper->isLoginValid($this->arrayOfPlayers, $strEmail, $strPassword)) == true) //checks in correct
+        {
+            return $this->currentView->getGameSelectHTML($this->loginHelper->playerLoggedIn);
+        }
+        else
+        {
+            return $this->currentView->getLoginScreenHTML();
         }
 
-        return $this->currentView->getStartSessionHTML(); //$cu
     }
 
-    public function newGame($numberOfRoundsToBePlayed, $strCategorySelected)
+    public function logOutUser() //called when login button submits
     {
-        $this->arrayOfQuestions = $this->dAO->setupQuestions($strCategorySelected);
-        $this->currentGame = new GameModel($this->testPlayer, $numberOfRoundsToBePlayed, $this->arrayOfQuestions);
+        $this->loginHelper->logOut();
+//        $this->arrayOfQuestions = null;
+//        $this->arrayOfPlayers = null;
+//        $this->currentGame = null;
+
+        return $this->loadLogin();
+    }
+
+    public function registerNewDetails($strEmail, $strPassword)
+    {
+        $this->arrayOfPlayers = $this->loginHelper->registerNewDetailsToPlayers($this->arrayOfPlayers, $strEmail, $strPassword);
+
+        return $this->loadLogin();
+    }
+
+
+
+    public function newGame($numberOfRoundsToBePlayed, $strCategorySelected) //called when login is successful
+    {
+        $this->arrayOfQuestions = $this->dAO->getQuestions($strCategorySelected);
+        $this->currentGame = new GameModel($this->loginHelper->playerLoggedIn, $numberOfRoundsToBePlayed, $this->arrayOfQuestions);
         return $this->currentView->getQuestionScreenHTML($this->currentGame);
     }
+
+
 
     public function submitAnswer($radioSelected)
     {
         $this->currentGame->submitAnswer($radioSelected);
         return $this->currentView->getQuestionScreenHTML($this->currentGame);
     }
+
+
 
     public function nextRound()
     {
@@ -72,7 +122,6 @@ class Controller
             return $this->currentView->getGameFinishedHTML($this->currentGame);
 
         }
-
     }
 
 
