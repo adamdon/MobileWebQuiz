@@ -3,10 +3,10 @@
 include 'View.php';
 include 'DataAccessObject.php';
 
-include 'QuestionModel.php';
-include 'PlayerModel.php';
-include 'GameModel.php';
-include 'RoundModel.php';
+include 'Models/QuestionModel.php';
+include 'Models/PlayerModel.php';
+include 'Models/GameModel.php';
+include 'Models/RoundModel.php';
 
 class Controller
 {
@@ -21,9 +21,9 @@ class Controller
     {
         $this->currentView = new View;
         $this->dAO = new DataAccessObject();
-        $this->testPlayer = new PlayerModel("Jonny5", "pass123");
+        $this->testPlayer = new PlayerModel("jonny5", "pass");
 
-        $this->arrayOfQuestions = $this->dAO->setupQuestions();
+        $this->arrayOfQuestions = []; //$this->dAO->setupQuestions();
     }
 
 
@@ -32,22 +32,47 @@ class Controller
         return $this->currentView->getStartSessionHTML(); //$cu
     }
 
-    public function newGame($numberOfRoundsToBePlayed)
+    public function logIn($strEmail, $strPassword)
     {
-        $this->currentGame = new GameModel($this->testPlayer,$numberOfRoundsToBePlayed, $this->arrayOfQuestions);
-        return $this->questionScreenHTML();
+        if(($strEmail == $this->testPlayer->username) && ($strPassword == $this->testPlayer->password) )
+        {
+            return $this->currentView->getGameSelectHTML();
+        }
+        else
+        {
+            return $this->currentView->getStartSessionHTML();
+        }
+
+        return $this->currentView->getStartSessionHTML(); //$cu
+    }
+
+    public function newGame($numberOfRoundsToBePlayed, $strCategorySelected)
+    {
+        $this->arrayOfQuestions = $this->dAO->setupQuestions($strCategorySelected);
+        $this->currentGame = new GameModel($this->testPlayer, $numberOfRoundsToBePlayed, $this->arrayOfQuestions);
+        return $this->currentView->getQuestionScreenHTML($this->currentGame);
     }
 
     public function submitAnswer($radioSelected)
     {
         $this->currentGame->submitAnswer($radioSelected);
-        return $this->questionScreenHTML();
+        return $this->currentView->getQuestionScreenHTML($this->currentGame);
     }
 
     public function nextRound()
     {
         $this->currentGame->nextRound();
-        return $this->questionScreenHTML();
+        if($this->currentGame->numberOfCurrentRound < $this->currentGame->numberOfRoundsToBePlayed)
+        {
+            return $this->currentView->getQuestionScreenHTML($this->currentGame);
+        }
+        else
+        {
+            //$this->currentGame = null; //null to save on session memory later on
+            return $this->currentView->getGameFinishedHTML($this->currentGame);
+
+        }
+
     }
 
 
@@ -55,9 +80,6 @@ class Controller
 
     //Private functions here
     //
-    private function questionScreenHTML()
-    {
-        return $this->currentView->getQuestionScreenHTML($this->currentGame);
-    }
+
 
 }

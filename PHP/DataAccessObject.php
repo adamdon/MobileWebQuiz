@@ -3,31 +3,90 @@
 
 class DataAccessObject
 {
-    public $question1;
-    public $question2;
-    public $question3;
-    public $question4;
-    public $question5;
-
-    public $arrayOfQuestions;
 
     public function __construct()
     {
 
     }
 
-    public function setupQuestions()
+    public function setupQuestions($strCategorySelected)
     {
-        $this->question1 = new QuestionModel("What is the capital of France", "Paris");
-        $this->question2 = new QuestionModel("What is the capital of Germany", "Berlin");
-        $this->question3 = new QuestionModel("What is the capital of Italy", "Rome");
-        $this->question4 = new QuestionModel("What is the capital of Spain", "Madrid");
-        $this->question5 = new QuestionModel("What is the capital of Netherlands", "Amsterdam");
+        if ($strCategorySelected == "Capital Cities")
+        {
+            return $this->CapitalCityQuestions();
+        }
+        elseif ($strCategorySelected == "Movie Quotes")
+        {
+            return $this->MovieQuoteQuestions();
+        }
+    }
 
 
-        $this->arrayOfQuestions = array($this->question1, $this->question2, $this->question3, $this->question4, $this->question5);
+    private function CapitalCityQuestions()
+    {
+        $arrayOfQuestions = [];
 
-        return $this->arrayOfQuestions;
+        $question1 = new QuestionModel("What is the capital of France", "Paris");
+        $question2 = new QuestionModel("What is the capital of Germany", "Berlin");
+        $question3 = new QuestionModel("What is the capital of Italy", "Rome");
+        $question4 = new QuestionModel("What is the capital of Spain", "Madrid");
+        $question5 = new QuestionModel("What is the capital of Austria", "Vienna");
+        $question6 = new QuestionModel("What is the capital of Belgium", "Brussels");
+        $question7 = new QuestionModel("What is the capital of Czech Republic", "Prague");
+        $question8 = new QuestionModel("What is the capital of Denmark", "Copenhagen");
+        $question9 = new QuestionModel("What is the capital of Estonia", "Tallinn");
+        $question10 = new QuestionModel("What is the capital of Norway", "Oslo");
+        $question11 = new QuestionModel("What is the capital of Poland", "Warsaw");
+        $question12 = new QuestionModel("What is the capital of Sweden", "Stockholm");
+        $question13 = new QuestionModel("What is the capital of Portugal", "Lisbon");
+
+        array_push($arrayOfQuestions, $question1);
+        array_push($arrayOfQuestions, $question2);
+        array_push($arrayOfQuestions, $question3);
+        array_push($arrayOfQuestions, $question4);
+        array_push($arrayOfQuestions, $question5);
+        array_push($arrayOfQuestions, $question6);
+        array_push($arrayOfQuestions, $question7);
+        array_push($arrayOfQuestions, $question8);
+        array_push($arrayOfQuestions, $question9);
+        array_push($arrayOfQuestions, $question10);
+        array_push($arrayOfQuestions, $question11);
+        array_push($arrayOfQuestions, $question12);
+        array_push($arrayOfQuestions, $question13);
+
+        return $arrayOfQuestions;
+    }
+
+    private function MovieQuoteQuestions()
+    {
+        $arrayOfQuestions = [];
+
+        $question1 = new QuestionModel("We're Gonna Need a Bigger Boat", "Jaws");
+        $question2 = new QuestionModel("Luke, I am Your Father", "Star Wars");
+        $question3 = new QuestionModel("Roads? Where we're going, we don't need roads", "Back to the Future");
+        $question4 = new QuestionModel("Hasta la vista, baby", "Terminator 2");
+        $question5 = new QuestionModel("You shall not pass", "Lord of the Rings");
+        $question6 = new QuestionModel("Heeere's Johnny!", "The Shining");
+        $question7 = new QuestionModel("Life is like a box of chocolates", "Forest Gump");
+        $question8 = new QuestionModel("Why so serious?", "The Dark Knight");
+        $question9 = new QuestionModel("There's no place like home", "The Wizard of Oz");
+        $question10 = new QuestionModel("Yer a wizard, Harry", "Harry Potter");
+        $question11 = new QuestionModel("Wanna play a game?", "Saw");
+
+        array_push($arrayOfQuestions, $question1);
+        array_push($arrayOfQuestions, $question2);
+        array_push($arrayOfQuestions, $question3);
+        array_push($arrayOfQuestions, $question4);
+        array_push($arrayOfQuestions, $question5);
+        array_push($arrayOfQuestions, $question6);
+        array_push($arrayOfQuestions, $question7);
+        array_push($arrayOfQuestions, $question8);
+        array_push($arrayOfQuestions, $question9);
+        array_push($arrayOfQuestions, $question10);
+        array_push($arrayOfQuestions, $question11);
+
+
+        return $arrayOfQuestions;
     }
 
 }

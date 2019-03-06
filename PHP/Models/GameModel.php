@@ -54,26 +54,11 @@ class GameModel
 
     public function nextRound()
     {
+        $this->textOfStatus = ("Next Question");
         $this->numberOfCurrentRound = ($this->numberOfCurrentRound + 1);
     }
 
-    //TODO
-    //move to RoundModel when arrayOfRounds is static
-    public function getAnswerTextFromRadioNumber($requestedRadioNumber)
-    {
-        if($this->arrayOfRounds[$this->numberOfCurrentRound]->correctRadioNumber == $requestedRadioNumber)
-        {
-            return $this->arrayOfRounds[$this->numberOfCurrentRound]->questionCorrect->strAnswer;
-        }
-        elseif($this->arrayOfRounds[$this->numberOfCurrentRound]->wrongRadioANumber == $requestedRadioNumber)
-        {
-            return $this->arrayOfRounds[$this->numberOfCurrentRound]->questionWrongA->strAnswer;
-        }
-        elseif($this->arrayOfRounds[$this->numberOfCurrentRound]->wrongRadioBNumber == $requestedRadioNumber)
-        {
-            return $this->arrayOfRounds[$this->numberOfCurrentRound]->questionWrongB->strAnswer;
-        }
-    }
+
 
 
 }
