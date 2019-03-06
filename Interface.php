@@ -31,6 +31,8 @@ if(isset($_GET['request'], $_GET['p1'], $_GET['p2']) == true)
             break;
         case "logIn": echo $controller->logInUser($passedParameterVar1, $passedParameterVar2);
             break;
+        case "logOut": echo $controller->logOutUser();
+            break;
         case "newGame": echo $controller->newGame($passedParameterVar1, $passedParameterVar2);
             break;
         case "submitAnswer": echo $controller->submitAnswer($passedParameterVar1);

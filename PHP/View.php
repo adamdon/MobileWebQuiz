@@ -235,7 +235,7 @@ class View
                                         <a class="nav-link" href="Home.html">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="About.html">About</a>
+                                        <a class="nav-link" onclick="logOut()">LogOut</a>
                                     </li>
                                     <li class="nav-item ">
                                         <a class="nav-link" href="Register.html">Sign Up</a>

@@ -59,7 +59,12 @@ function registerNewDetails()
     requestContent(strURL);
 }
 
+function logOut()
+{
+    let strURL = "Interface.php?request=logOut&p1=0&p2=0";
 
+    requestContent(strURL);
+}
 
 
 function requestContent(strURL)

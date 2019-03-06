@@ -15,6 +15,7 @@ class Controller
     public $arrayOfPlayers;
 
     public $currentGame;
+
     public $currentView;
     public $dAO;
     public $loginHelper;
@@ -70,6 +71,16 @@ class Controller
             return $this->currentView->getLoginScreenHTML();
         }
 
+    }
+
+    public function logOutUser() //called when login button submits
+    {
+        $this->loginHelper->logOut();
+//        $this->arrayOfQuestions = null;
+//        $this->arrayOfPlayers = null;
+//        $this->currentGame = null;
+
+        return $this->loadLogin();
     }
 
     public function registerNewDetails($strEmail, $strPassword)

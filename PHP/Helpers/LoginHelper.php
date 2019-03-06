@@ -44,6 +44,16 @@ class LoginHelper
         return $arrayOfPlayers;
     }
 
+    public function logOut()
+    {
+        $this->isPlayerLoggedIn = false;
+        $this->playerLoggedIn = null;
+        $this->timeLoggedIn = null;
+
+    }
+
+
+
 
 
 
