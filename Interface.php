@@ -27,6 +27,8 @@ if(isset($_GET['request'], $_GET['p1'], $_GET['p2']) == true)
             break;
         case "loadRegisterPage": echo $controller->loadRegisterPage();
             break;
+        case "loadLogin": echo $controller->loadLogin();
+            break;
         case "registerNewDetails": echo $controller->registerNewDetails($passedParameterVar1, $passedParameterVar2);
             break;
         case "logIn": echo $controller->logInUser($passedParameterVar1, $passedParameterVar2);
@@ -40,7 +42,7 @@ if(isset($_GET['request'], $_GET['p1'], $_GET['p2']) == true)
         case "nextRound": echo $controller->nextRound();
             break;
         default:
-            echo "Error, sorry";
+            echo "Interface error - Request ' .$passedRequestVar .' not found, sorry";
     }
 
     $_SESSION["controller"] = serialize($controller);

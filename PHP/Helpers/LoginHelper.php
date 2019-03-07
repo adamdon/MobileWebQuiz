@@ -5,6 +5,7 @@ class LoginHelper
     public $playerLoggedIn;
     public $timeLoggedIn;
     public $isPlayerLoggedIn = false;
+    public $strMessage = "Welcome!";
 
     public function __construct()    //$playerLoggedIn)
     {
@@ -22,6 +23,8 @@ class LoginHelper
                 $this->playerLoggedIn = $playerIndex;
                 $this->timeLoggedIn = date('Y/m/d H:i:s');
 
+                $this->strMessage = ("Player " . $playerIndex->username . " logged in since " . $this->timeLoggedIn);
+
                 return $this->isPlayerLoggedIn;
             }
 //            else
@@ -29,6 +32,8 @@ class LoginHelper
 //                $isPlayerLoggedIn = false;
 //            }
         }
+
+        $this->strMessage = ("Invalid Details for " . $strEmail);
 
         $isPlayerLoggedIn = false;
         return $isPlayerLoggedIn;
@@ -41,6 +46,8 @@ class LoginHelper
         $NewPlayer = new PlayerModel($strEmail, $strPassword, false);
         array_push($arrayOfPlayers, $NewPlayer);
 
+        $this->strMessage = ($strEmail . " successfully registered");
+
         return $arrayOfPlayers;
     }
 
@@ -50,6 +57,7 @@ class LoginHelper
         $this->playerLoggedIn = null;
         $this->timeLoggedIn = null;
 
+        $this->strMessage = ( "Logged out at " . (date('Y/m/d H:i:s')) );
     }
 
 

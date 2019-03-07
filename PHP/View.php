@@ -9,11 +9,14 @@ class View
         //$this->model = $model;
     }
 
-    public function getLoginScreenHTML()
+    public function getLoginScreenHTML($loginHelperState)
     {
+        $strMessage = $loginHelperState->strMessage;
         $stringOfHTML = '
             
-            
+            </br>
+            <label for="message"><b>' . $strMessage . ' </b></label>
+            </br>
             </br>
             <label for="email"><b>Username</b></label>
             <input type="text" placeholder="Enter Email" id="email" required>
@@ -232,16 +235,16 @@ class View
                             <div class="collapse navbar-collapse" id="navbarResponsive">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="Home.html">Home</a>
+                                        <a class="nav-link" onclick="startSession()">Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" onclick="logOut()">LogOut</a>
                                     </li>
                                     <li class="nav-item ">
-                                        <a class="nav-link" href="Register.html">Sign Up</a>
+                                        <a class="nav-link" onclick="loadRegisterPage()">Sign Up</a>
                                     </li>
                                     <li class="nav-item ">
-                                        <a class="nav-link" href="Login.html">Sign In</a>
+                                        <a class="nav-link" onclick="loadLogin()">Sign In</a>
                                     </li>
                                 </ul>
                             </div>

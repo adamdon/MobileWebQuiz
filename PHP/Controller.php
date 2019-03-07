@@ -36,20 +36,22 @@ class Controller
 
     public function startSession() //first method ran from body onload
     {
-        return $this->loadLogin();
-    }
 
-
-    public function loadLogin()
-    {
         if($this->loginHelper->isPlayerLoggedIn == true) //check to see if loginHelper has a user logged in already
         {
             return $this->currentView->getGameSelectHTML($this->loginHelper->playerLoggedIn); //returns game select if logged in
         }
         else
         {
-            return $this->currentView->getLoginScreenHTML(); // returns login screen if not logged in
+            return $this->currentView->getLoginScreenHTML($this->loginHelper); // returns login screen if not logged in
         }
+
+    }
+
+
+    public function loadLogin()
+    {
+        return $this->currentView->getLoginScreenHTML($this->loginHelper); //
     }
 
 
@@ -68,7 +70,7 @@ class Controller
         }
         else
         {
-            return $this->currentView->getLoginScreenHTML();
+            return $this->currentView->getLoginScreenHTML($this->loginHelper);
         }
 
     }
@@ -76,9 +78,6 @@ class Controller
     public function logOutUser() //called when login button submits
     {
         $this->loginHelper->logOut();
-//        $this->arrayOfQuestions = null;
-//        $this->arrayOfPlayers = null;
-//        $this->currentGame = null;
 
         return $this->loadLogin();
     }

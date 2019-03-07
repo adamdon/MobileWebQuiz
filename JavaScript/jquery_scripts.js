@@ -48,6 +48,13 @@ function loadRegisterPage()
     requestContent(strURL);
 }
 
+function loadLogin()
+{
+    let strURL = "Interface.php?request=loadLogin&p1=0&p2=0";
+
+    requestContent(strURL);
+}
+
 function registerNewDetails()
 {
     let strEmailReg = $('#email').val();
