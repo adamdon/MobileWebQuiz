@@ -9,6 +9,12 @@ class View
         //$this->model = $model;
     }
 
+
+
+
+    //
+    //Login and user accounts html
+    //
     public function getLoginScreenHTML($loginHelperState)
     {
         $strMessage = $loginHelperState->strMessage;
@@ -37,6 +43,7 @@ class View
         return ($this->navigationBarHTML() . $this->carouselTopHTML() . $stringOfHTML . $this->carouselBottomHTML() . $this->footerHTML());
     }
 
+
     public function getRegisterScreenHTML()
     {
         $stringOfHTML = '
@@ -60,6 +67,12 @@ class View
     }
 
 
+
+
+
+    //
+    //Game play HTML
+    //
     public function getGameSelectHTML($currentPlayer)
     {
         $currentUserName = $currentPlayer->username;
@@ -94,7 +107,6 @@ class View
         return ($this->navigationBarHTML() . $this->carouselTopHTML() . $stringOfHTML . $this->carouselBottomHTML() . $this->footerHTML());
 
     }
-
 
 
     public function getQuestionScreenHTML($currentGame)
@@ -180,6 +192,14 @@ class View
     }
 
 
+
+
+
+
+
+    //
+    //Page templates HTML
+    //
     private function carouselTopHTML()
     {
         $stringOfHTML = ' 
@@ -197,6 +217,7 @@ class View
 
         return $stringOfHTML;
     }
+
 
     private function carouselBottomHTML()
     {
@@ -219,6 +240,7 @@ class View
 
         return $stringOfHTML;
     }
+
 
     private function navigationBarHTML()
     {
@@ -256,6 +278,7 @@ class View
 
         return $stringOfHTML;
     }
+
 
     private function footerHTML()
     {
@@ -309,6 +332,11 @@ class View
 
 
 
+
+
+
+    //
+    //Private functions
     //might move this to a static method in round
     private function getAnswerTextFromRadioNumber($requestedRadioNumber, $currentGame)
     {

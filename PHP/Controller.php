@@ -30,13 +30,11 @@ class Controller
         $this->currentGame = (object)[];
         $this->arrayOfQuestions = []; //$this->dAO->setupQuestions();
         $this->arrayOfPlayers = $this->dAO->getPlayers();
-
     }
 
 
     public function startSession() //first method ran from body onload
     {
-
         if($this->loginHelper->isPlayerLoggedIn == true) //check to see if loginHelper has a user logged in already
         {
             return $this->currentView->getGameSelectHTML($this->loginHelper->playerLoggedIn); //returns game select if logged in
@@ -45,10 +43,15 @@ class Controller
         {
             return $this->currentView->getLoginScreenHTML($this->loginHelper); // returns login screen if not logged in
         }
-
     }
 
 
+
+
+
+    //
+    // User Login logic bellow
+    //
     public function loadLogin()
     {
         return $this->currentView->getLoginScreenHTML($this->loginHelper); //
@@ -61,7 +64,6 @@ class Controller
     }
 
 
-
     public function logInUser($strEmail, $strPassword) //called when login button submits
     {
         if( ($this->loginHelper->isLoginValid($this->arrayOfPlayers, $strEmail, $strPassword)) == true) //checks in correct
@@ -72,8 +74,8 @@ class Controller
         {
             return $this->currentView->getLoginScreenHTML($this->loginHelper);
         }
-
     }
+
 
     public function logOutUser() //called when login button submits
     {
@@ -81,6 +83,7 @@ class Controller
 
         return $this->loadLogin();
     }
+
 
     public function registerNewDetails($strEmail, $strPassword)
     {
@@ -91,6 +94,13 @@ class Controller
 
 
 
+
+
+
+
+    //
+    //Game Logic bellow
+    //
     public function newGame($numberOfRoundsToBePlayed, $strCategorySelected) //called when login is successful
     {
         $this->arrayOfQuestions = $this->dAO->getQuestions($strCategorySelected);
@@ -99,13 +109,11 @@ class Controller
     }
 
 
-
     public function submitAnswer($radioSelected)
     {
         $this->currentGame->submitAnswer($radioSelected);
         return $this->currentView->getQuestionScreenHTML($this->currentGame);
     }
-
 
 
     public function nextRound()
@@ -119,7 +127,6 @@ class Controller
         {
             //$this->currentGame = null; //null to save on session memory later on
             return $this->currentView->getGameFinishedHTML($this->currentGame);
-
         }
     }
 
