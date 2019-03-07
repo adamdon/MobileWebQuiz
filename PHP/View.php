@@ -73,9 +73,9 @@ class View
     //
     //Game play HTML
     //
-    public function getGameSelectHTML($currentPlayer)
+    public function getGameSelectHTML($loginHelper)
     {
-        $currentUserName = $currentPlayer->username;
+        $currentUserName = $loginHelper->playerLoggedIn->username;
 
         $stringOfHTML = '
             </br>

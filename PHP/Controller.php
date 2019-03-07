@@ -37,7 +37,7 @@ class Controller
     {
         if($this->loginHelper->isPlayerLoggedIn == true) //check to see if loginHelper has a user logged in already
         {
-            return $this->currentView->getGameSelectHTML($this->loginHelper->playerLoggedIn); //returns game select if logged in
+            return $this->currentView->getGameSelectHTML($this->loginHelper); //returns game select if logged in
         }
         else
         {
@@ -52,15 +52,15 @@ class Controller
     //
     // User Login logic bellow
     //
-    public function loadLogin()
+    public function loadLogin()//loads page only from view - no action taken
     {
         return $this->currentView->getLoginScreenHTML($this->loginHelper); //
     }
 
 
-    public function loadRegisterPage()
+    public function loadRegisterPage()//loads page only from view - no action taken
     {
-        return $this->currentView->getRegisterScreenHTML();
+        return $this->currentView->getRegisterScreenHTML($this->loginHelper);
     }
 
 
@@ -68,7 +68,7 @@ class Controller
     {
         if( ($this->loginHelper->isLoginValid($this->arrayOfPlayers, $strEmail, $strPassword)) == true) //checks in correct
         {
-            return $this->currentView->getGameSelectHTML($this->loginHelper->playerLoggedIn);
+            return $this->currentView->getGameSelectHTML($this->loginHelper);
         }
         else
         {
@@ -85,11 +85,18 @@ class Controller
     }
 
 
-    public function registerNewDetails($strEmail, $strPassword)
+    public function registerNewDetails($strEmail, $strPassword)// action for passing new user regs
     {
-        $this->arrayOfPlayers = $this->loginHelper->registerNewDetailsToPlayers($this->arrayOfPlayers, $strEmail, $strPassword);
+        if(($this->loginHelper->isRegistrationValid($this->arrayOfPlayers, $strEmail, $strPassword) == true))
+        {
+            $this->arrayOfPlayers = $this->loginHelper->registerNewDetailsToPlayers($this->arrayOfPlayers, $strEmail, $strPassword);
+            return $this->currentView->getLoginScreenHTML($this->loginHelper);
+        }
+        else
+        {
+            return $this->currentView->getRegisterScreenHTML($this->loginHelper);
+        }
 
-        return $this->loadLogin();
     }
 
 
@@ -132,7 +139,7 @@ class Controller
 
 
 
-
+    //
     //Private functions here
     //
 

@@ -6,6 +6,7 @@ class LoginHelper
     public $timeLoggedIn;
     public $isPlayerLoggedIn = false;
     public $strMessage = "Welcome!";
+    public $strRegMessage = "";
 
     public function __construct()    //$playerLoggedIn)
     {
@@ -41,6 +42,23 @@ class LoginHelper
     }
 
 
+    public function isRegistrationValid($arrayOfPlayers, $strEmail, $strPassword)
+    {
+        $isDetailsValid = true;
+        //TODO add validation tests
+        if($isDetailsValid = true)
+        {
+            return true;
+        }
+        else
+        {
+            $this->strRegMessage = ("Details entered for " . $strEmail . " are invalid");
+            return false;
+        }
+
+    }
+
+
     public function registerNewDetailsToPlayers($arrayOfPlayers, $strEmail, $strPassword)
     {
         $NewPlayer = new PlayerModel($strEmail, $strPassword, false);
@@ -50,6 +68,9 @@ class LoginHelper
 
         return $arrayOfPlayers;
     }
+
+
+
 
     public function logOut()
     {
