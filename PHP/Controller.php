@@ -77,7 +77,7 @@ class Controller
     }
 
 
-    public function logOutUser() //called when login button submits
+    public function logOutUser() //called when logout button submits
     {
         $this->loginHelper->logOut();
 

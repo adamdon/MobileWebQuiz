@@ -44,18 +44,25 @@ class LoginHelper
 
     public function isRegistrationValid($arrayOfPlayers, $strEmail, $strPassword)
     {
-        $isDetailsValid = true;
-        //TODO add validation tests
-        if($isDetailsValid = true)
+
+        foreach ($arrayOfPlayers as $playerIndex) //test if username already taken
         {
-            return true;
+            if($strEmail == $playerIndex->username)
+            {
+                $strInvalidReason = "user name already taken";
+                $this->strRegMessage = ("Details entered for " . $strEmail . " are invalid as " . $strInvalidReason);
+                return false;
+            }
         }
-        else
+
+        if(strlen($strPassword) < 4) //test if password is too small
         {
-            $this->strRegMessage = ("Details entered for " . $strEmail . " are invalid");
+            $strInvalidReason = "password is less than 4 characters";
+            $this->strRegMessage = ("Details entered for " . $strEmail . " are invalid as " . $strInvalidReason);
             return false;
         }
 
+        return true;
     }
 
 

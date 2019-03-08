@@ -44,9 +44,15 @@ class View
     }
 
 
-    public function getRegisterScreenHTML()
+    public function getRegisterScreenHTML($loginHelper)
     {
+        $strRegMessage = $loginHelper->strRegMessage;
+
         $stringOfHTML = '
+            </br>
+            <label for="regMessage"><b>' . $strRegMessage . ' </b></label>
+            </br>
+            </br>
             </br>
             <label for="email"><b>Set Username</b></label>
             <input type="text" placeholder="Enter a username" id="email" required>
