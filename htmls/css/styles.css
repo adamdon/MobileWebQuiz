@@ -1,6 +1,111 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
 
 
+
+
+/*---Media Queries --*/
+
+/*---MIN 992px --*/
+@media (min-width: 992px) {
+  .login{
+    padding: 40px;
+    background: #191919 !important;
+    border: 2px solid #2ecc71 !important;
+    text-align: center;
+    width: 500px !important;
+  }
+  
+  .login input[type = "text"],.login input[type = "password"]{
+    border:0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+  }
+  .login input[type = "text"]:focus,.login input[type = "password"]:focus{
+    width: 280px;
+    border-color: #2ecc71;
+  }
+    
+  .login input[type = "submit"]{
+    border:0;
+    background: none !important;
+    display: block;
+    margin: auto;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding: 14px 40px;
+    outline: none;
+    color: white !important;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+  }
+  }
+
+
+  /*---MAX 992px --*/
+  @media (max-width: 992px) {
+  .social a{
+      font-size: 4em;
+      padding: 2rem;
+    }
+    }
+  
+/*---MAX 768px --*/
+
+  @media (max-width: 768px) {
+  .carousel-caption  {
+  
+  }
+  
+  .carousel-caption h1 {
+    font-size: 350%;
+  }
+  
+  .carousel-caption h3 {
+    font-size: 140%;
+    font-weight: 400;
+    padding-bottom: 0.2rem;
+  }
+  .carousel-caption .btn {
+    font-size: 95%;
+    padding: 8px 14px;
+  }
+  .display-4 {
+    font-size: 200%;
+  }
+  }
+  
+
+  /*---MAX 576px --*/
+
+
+  @media (max-width: 576px) {
+    
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 Extra small (xs) devices (portrait phones, less than 576px)
 No media query since this is the default in Bootstrap
@@ -18,10 +123,7 @@ Extra (xl) large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
 */
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+
 
 html, body {
 	height: 100%;
@@ -71,14 +173,27 @@ nav.stroke ul li a:hover:after {
   width: 100%;
 }
 
-.carousel-inner img {
+.carousel-inner {
 	width: 100%;
-	height: 100%;
+}
+
+.explore1 {
+	height: 580px;
+	background: url('../images/quizhead.jpg'); 
+	background-size: cover;
+	background-position: center;
+}
+
+.explore2 {
+	height: 580px;
+	background: url('../images/hdrs.jpg');
+	background-size: cover;
+	background-position: center;
 }
 
 .carousel-caption {
-	position: absolute;
-	transform: translateY(-50%);
+  bottom: unset !important;
+
 }
 
 .carousel-caption h1 {
@@ -131,7 +246,9 @@ nav.stroke ul li a:hover:after {
 .fa-facebook {
 	color: #3b5998;
 }
-
+.display {
+  display:inline;
+}
 .fa-twitter {
 	color: #00aced;
 }
@@ -207,104 +324,24 @@ body {
 
 .navigation-main {
 	background: rgba(0, 0, 0, 0) !important;
-	background:transparent;
 	height: 86px;
 }
 
 .navbar-brand img {
-	height: 60px !important;
+	height: 60px;
 }
 
 
 #contid1 {
-	padding: 0px !important;
+	padding: 0px ;
 }
 
 #contid2 {
-	padding: 0px !important;
+	padding: 0px;
 }
 
 
 
-/*---Media Queries --*/
-@media (min-width: 992px) {
-.login{
-  padding: 40px;
-	background: #191919 !important;
-	border: 2px solid #2ecc71 !important;
-	text-align: center;
-	width: 500px !important;
-}
-
-.login input[type = "text"],.login input[type = "password"]{
-  border:0;
-  background: none;
-  display: block;
-  margin: 20px auto;
-  text-align: center;
-  border: 2px solid #3498db;
-  padding: 14px 10px;
-  width: 200px;
-  outline: none;
-  color: white;
-  border-radius: 24px;
-  transition: 0.25s;
-}
-.login input[type = "text"]:focus,.login input[type = "password"]:focus{
-	width: 280px;
-	border-color: #2ecc71;
-}
-	
-.login input[type = "submit"]{
-  border:0;
-  background: none !important;
-	display: block;
-	margin: auto;
-  text-align: center;
-  border: 2px solid #2ecc71;
-  padding: 14px 40px;
-  outline: none;
-	color: white !important;
-  border-radius: 24px;
-  transition: 0.25s;
-  cursor: pointer;
-}
-}
-
-@media (max-width: 992px) {
-.social a{
-		font-size: 4em;
-		padding: 2rem;
-	}
-  }
-
-@media (max-width: 768px) {
-.carousel-caption  {
-	top: 37%;
-	transform: translateY(-50%);
-}
-
-.carousel-caption h1 {
-	font-size: 350%;
-}
-
-.carousel-caption h3 {
-	font-size: 140%;
-	font-weight: 400;
-	padding-bottom: 0.2rem;
-}
-.carousel-caption .btn {
-	font-size: 95%;
-	padding: 8px 14px;
-}
-.display-4 {
-	font-size: 200%;
-}
-}
-
-@media (max-width: 576px) {
-  
-}
 
 
 /*---Firefox Bug Fix --*/
@@ -401,20 +438,11 @@ figure {
 	background-color: transparent !important;
 }
 
-.login {
-	padding: 40px;
-	margin-top: 20rem;
+.login{
+	padding: 40px 0px;
 	background: #191919 !important;
 	border: 2px solid #2ecc71 !important;
-  text-align: center;
-  
-  opacity: 0;
-  animation: fadeIn .8s ease forwards;
-}
-
-.login > * {
-  opacity: 0;
-  animation: fadeIn .4s ease .8s forwards;
+	text-align: center;
 }
 
 .login input[type = "text"],.login input[type = "password"]{
@@ -467,10 +495,25 @@ figure {
 }
 
 .galax {
-	padding: 0px;
-	margin: 0px;
+	padding: 30px 0px;
+  margin: 0px;
+  overflow: auto;
 	background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
-background-size: cover;
-background-repeat: no-repeat;
-height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.carousel-item-next, .carousel-item-prev, .carousel-item.active {
+  display: flex !important;
+  align-items: center;
 }
