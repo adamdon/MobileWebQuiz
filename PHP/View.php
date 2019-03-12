@@ -9,11 +9,20 @@ class View
         //$this->model = $model;
     }
 
-    public function getLoginScreenHTML()
+
+
+
+    //
+    //Login and user accounts html
+    //
+    public function getLoginScreenHTML($loginHelperState)
     {
+        $strMessage = $loginHelperState->strMessage;
         $stringOfHTML = '
             
-            
+            </br>
+            <label for="message"><b>' . $strMessage . ' </b></label>
+            </br>
             </br>
             <label for="email"><b>Username</b></label>
             <input type="text" placeholder="Enter Email" id="email" required>
@@ -34,9 +43,16 @@ class View
         return ($this->navigationBarHTML() . $this->carouselTopHTML() . $stringOfHTML . $this->carouselBottomHTML() . $this->footerHTML());
     }
 
-    public function getRegisterScreenHTML()
+
+    public function getRegisterScreenHTML($loginHelper)
     {
+        $strRegMessage = $loginHelper->strRegMessage;
+
         $stringOfHTML = '
+            </br>
+            <label for="regMessage"><b>' . $strRegMessage . ' </b></label>
+            </br>
+            </br>
             </br>
             <label for="email"><b>Set Username</b></label>
             <input type="text" placeholder="Enter a username" id="email" required>
@@ -57,9 +73,15 @@ class View
     }
 
 
-    public function getGameSelectHTML($currentPlayer)
+
+
+
+    //
+    //Game play HTML
+    //
+    public function getGameSelectHTML($loginHelper)
     {
-        $currentUserName = $currentPlayer->username;
+        $currentUserName = $loginHelper->playerLoggedIn->username;
 
         $stringOfHTML = '
             </br>
@@ -91,7 +113,6 @@ class View
         return ($this->navigationBarHTML() . $this->carouselTopHTML() . $stringOfHTML . $this->carouselBottomHTML() . $this->footerHTML());
 
     }
-
 
 
     public function getQuestionScreenHTML($currentGame)
@@ -177,6 +198,14 @@ class View
     }
 
 
+
+
+
+
+
+    //
+    //Page templates HTML
+    //
     private function carouselTopHTML()
     {
         $stringOfHTML = ' 
@@ -194,6 +223,7 @@ class View
 
         return $stringOfHTML;
     }
+
 
     private function carouselBottomHTML()
     {
@@ -217,6 +247,7 @@ class View
         return $stringOfHTML;
     }
 
+
     private function navigationBarHTML()
     {
         $stringOfHTML = ' 
@@ -232,16 +263,16 @@ class View
                             <div class="collapse navbar-collapse" id="navbarResponsive">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="Home.html">Home</a>
+                                        <a class="nav-link" onclick="startSession()">Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" onclick="logOut()">LogOut</a>
                                     </li>
                                     <li class="nav-item ">
-                                        <a class="nav-link" href="Register.html">Sign Up</a>
+                                        <a class="nav-link" onclick="loadRegisterPage()">Sign Up</a>
                                     </li>
                                     <li class="nav-item ">
-                                        <a class="nav-link" href="Login.html">Sign In</a>
+                                        <a class="nav-link" onclick="loadLogin()">Sign In</a>
                                     </li>
                                 </ul>
                             </div>
@@ -253,6 +284,7 @@ class View
 
         return $stringOfHTML;
     }
+
 
     private function footerHTML()
     {
@@ -306,6 +338,11 @@ class View
 
 
 
+
+
+
+    //
+    //Private functions
     //might move this to a static method in round
     private function getAnswerTextFromRadioNumber($requestedRadioNumber, $currentGame)
     {

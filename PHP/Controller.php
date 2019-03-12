@@ -30,68 +30,84 @@ class Controller
         $this->currentGame = (object)[];
         $this->arrayOfQuestions = []; //$this->dAO->setupQuestions();
         $this->arrayOfPlayers = $this->dAO->getPlayers();
-
     }
 
 
     public function startSession() //first method ran from body onload
     {
-        return $this->loadLogin();
-    }
-
-
-    public function loadLogin()
-    {
         if($this->loginHelper->isPlayerLoggedIn == true) //check to see if loginHelper has a user logged in already
         {
-            return $this->currentView->getGameSelectHTML($this->loginHelper->playerLoggedIn); //returns game select if logged in
+            return $this->currentView->getGameSelectHTML($this->loginHelper); //returns game select if logged in
         }
         else
         {
-            return $this->currentView->getLoginScreenHTML(); // returns login screen if not logged in
+            return $this->currentView->getLoginScreenHTML($this->loginHelper); // returns login screen if not logged in
         }
     }
 
 
-    public function loadRegisterPage()
+
+
+
+    //
+    // User Login logic bellow
+    //
+    public function loadLogin()//loads page only from view - no action taken
     {
-        return $this->currentView->getRegisterScreenHTML();
+        return $this->currentView->getLoginScreenHTML($this->loginHelper); //
     }
 
+
+    public function loadRegisterPage()//loads page only from view - no action taken
+    {
+        return $this->currentView->getRegisterScreenHTML($this->loginHelper);
+    }
 
 
     public function logInUser($strEmail, $strPassword) //called when login button submits
     {
         if( ($this->loginHelper->isLoginValid($this->arrayOfPlayers, $strEmail, $strPassword)) == true) //checks in correct
         {
-            return $this->currentView->getGameSelectHTML($this->loginHelper->playerLoggedIn);
+            return $this->currentView->getGameSelectHTML($this->loginHelper);
         }
         else
         {
-            return $this->currentView->getLoginScreenHTML();
+            return $this->currentView->getLoginScreenHTML($this->loginHelper);
+        }
+    }
+
+
+    public function logOutUser() //called when logout button submits
+    {
+        $this->loginHelper->logOut();
+
+        return $this->loadLogin();
+    }
+
+
+    public function registerNewDetails($strEmail, $strPassword)// action for passing new user regs
+    {
+        if(($this->loginHelper->isRegistrationValid($this->arrayOfPlayers, $strEmail, $strPassword) == true))
+        {
+            $this->arrayOfPlayers = $this->loginHelper->registerNewDetailsToPlayers($this->arrayOfPlayers, $strEmail, $strPassword);
+            return $this->currentView->getLoginScreenHTML($this->loginHelper);
+        }
+        else
+        {
+            return $this->currentView->getRegisterScreenHTML($this->loginHelper);
         }
 
     }
 
-    public function logOutUser() //called when login button submits
-    {
-        $this->loginHelper->logOut();
-//        $this->arrayOfQuestions = null;
-//        $this->arrayOfPlayers = null;
-//        $this->currentGame = null;
-
-        return $this->loadLogin();
-    }
-
-    public function registerNewDetails($strEmail, $strPassword)
-    {
-        $this->arrayOfPlayers = $this->loginHelper->registerNewDetailsToPlayers($this->arrayOfPlayers, $strEmail, $strPassword);
-
-        return $this->loadLogin();
-    }
 
 
 
+
+
+
+    //
+    //Game Logic bellow
+    //
     public function newGame($numberOfRoundsToBePlayed, $strCategorySelected) //called when login is successful
     {
         $this->arrayOfQuestions = $this->dAO->getQuestions($strCategorySelected);
@@ -100,13 +116,11 @@ class Controller
     }
 
 
-
     public function submitAnswer($radioSelected)
     {
         $this->currentGame->submitAnswer($radioSelected);
         return $this->currentView->getQuestionScreenHTML($this->currentGame);
     }
-
 
 
     public function nextRound()
@@ -120,13 +134,12 @@ class Controller
         {
             //$this->currentGame = null; //null to save on session memory later on
             return $this->currentView->getGameFinishedHTML($this->currentGame);
-
         }
     }
 
 
 
-
+    //
     //Private functions here
     //
 
