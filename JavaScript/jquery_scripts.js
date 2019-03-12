@@ -1,6 +1,8 @@
 function startSession()
 {
-    let strURL = "Interface.php?request=startSession&p1=0&p2=0";
+    //let strURL = "Interface.php?request=startSession&p1=0&p2=0";
+    let strURL = getURL("startSession", "0", "0");
+
     requestContent(strURL);
 }
 
@@ -9,7 +11,8 @@ function logIn()
     let strEmail = $('#email').val();
     let strPassword= $('#pass').val();
 
-    let strURL = "Interface.php?request=logIn&p1=" + strEmail + "&p2=" + strPassword;
+    //let strURL = "Interface.php?request=logIn&p1=" + strEmail + "&p2=" + strPassword;
+    let strURL = getURL("logIn", strEmail, strPassword);
 
     requestContent(strURL);
 }
@@ -20,7 +23,8 @@ function startGame()
     let strRoundsSelectedNum = intRoundsSelectedNum.toString();
     let strCategorySelected = $('#selectCategory').val();
 
-    let strURL = "Interface.php?request=newGame&p1=" + strRoundsSelectedNum + "&p2=" + strCategorySelected;
+    //let strURL = "Interface.php?request=newGame&p1=" + strRoundsSelectedNum + "&p2=" + strCategorySelected;
+    let strURL = getURL("newGame", strRoundsSelectedNum, strCategorySelected);
 
     requestContent(strURL);
 }
@@ -29,7 +33,8 @@ function submitAnswer()
 {
     let radioSelected = $('input[name=options]:checked').val();
 
-    let strURL = "Interface.php?request=submitAnswer&p1=" + radioSelected + "&p2=0";
+    //let strURL = "Interface.php?request=submitAnswer&p1=" + radioSelected + "&p2=0";
+    let strURL = getURL("submitAnswer", radioSelected, "0");
 
     requestContent(strURL);
 }
@@ -37,6 +42,8 @@ function submitAnswer()
 function nextRound()
 {
     let strURL = "Interface.php?request=nextRound&p1=0&p2=0";
+
+    //TODO convert URLS to new method
 
     requestContent(strURL);
 }
@@ -81,4 +88,21 @@ function requestContent(strURL)
     {
         $('#content').html(data);
     });
+}
+
+//makes url with notation: "Interface.php?request=logOut&p1=0&p2=0"
+function getURL(request, parameterVar1, parameterVar2)
+{
+    let stringToReturn = "";
+
+    stringToReturn += "Interface.php?request="
+    stringToReturn += request;
+
+    stringToReturn += "&p1=";
+    stringToReturn += parameterVar1;
+
+    stringToReturn += "&p2="
+    stringToReturn += parameterVar2;
+
+    return stringToReturn;
 }
