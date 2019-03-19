@@ -100,6 +100,12 @@ class Controller
     }
 
 
+    public function loadTopScoresPage()//loads page only from view - no action taken
+    {
+        return $this->currentView->getTopScoresScreenHTML($this->loginHelper, $this->arrayOfPlayers);
+    }
+
+
 
 
 

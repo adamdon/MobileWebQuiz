@@ -56,6 +56,13 @@ function loadLogin()
     requestContent(strURL);
 }
 
+function loadTopScores()
+{
+    //let strURL = "Interface.php?request=loadLogin&p1=0&p2=0";
+    let strURL = getURL("topScores", "0", "0");
+    requestContent(strURL);
+}
+
 function registerNewDetails()
 {
     let strEmailReg = $('#email').val();

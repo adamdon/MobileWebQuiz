@@ -73,6 +73,48 @@ class View
     }
 
 
+    public function getTopScoresScreenHTML($loginHelper, $arrayOfPlayers)
+    {
+        //$strRegMessage = $loginHelper->strRegMessage;
+
+        $stringOfHTML = '
+            </br>
+            <label for="topScoresMessage"><b>Top Scores</b></label>
+            </br>
+            </br>
+            <table>
+
+	    ';
+
+        foreach ($arrayOfPlayers as $playerIndex) // traverse of array
+        {
+            $currentName = $playerIndex->username;
+            $currentTotalScore = $playerIndex->totalScore;
+
+            $stringOfHTML .= '
+                <tr>
+                    <td>Player Name:</td>
+                    <td>'. $currentName .'</td>
+                </tr>
+                <tr>
+                    <td>Total Score:</td>
+                    <td>'. $currentTotalScore .'</td>
+                </tr>
+            
+            ';
+        }
+
+        $stringOfHTML .= '
+        </table>
+        </br>
+        
+        ';
+
+
+        return ($this->navigationBarHTML() . $this->carouselTopHTML() . $stringOfHTML . $this->carouselBottomHTML() . $this->footerHTML());
+    }
+
+
 
 
 
@@ -273,6 +315,9 @@ class View
                                     </li>
                                     <li class="nav-item ">
                                         <a class="nav-link" onclick="loadLogin()">Sign In</a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link" onclick="loadTopScores()">Top Scores</a>
                                     </li>
                                 </ul>
                             </div>
