@@ -1,101 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset='utf8'/>
+	<meta charset="utf8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="../css/styles.css"/>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"/>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../js/js.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Kotta+One%7CCantarell:400,700" />
-    <link rel="stylesheet" type="text/css" href="../css/auth.min.css" />
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Kotta+One%7CCantarell:400,700" />
 	<title>Sign In | FDM Quizes</title>
 </head>
 <body>
-	<div class="header-line">
-	</div>
-		<div class="navigation-main">
-			<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top stroke">
-				<div class="container-fluid">
-			  		<a class="navbar-brand" href="Home.html"> <img src="../images/fdm-logo.gif" class="nav-log" alt="FDM Logo"></a>
-			  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-			  			<span class="navbar-toggler-icon"></span>
-			  		</button>
-			  		<div class="collapse navbar-collapse" id="navbarResponsive">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="Home.html">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="About.html">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="Register.html">Sign Up</a>
-                            </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="Login.html">Sign In</a>
-                            </li>
-                        </ul>
-			  		</div>
-				</div>
-			</nav>
-		</div>
-		<div class="container-fluid">
-			<div class="container">
-                <div class="card bg-light">
-                    <article class="card-body mx-auto black-gradient" style="max-width: 400px;">
-                        <h4 class="card-title mt-3 text-center">Welcome Back</h4>
-                        <form class="auth auth-bg">
-                            <p class="get-started">Get started with your free account</p>
-                            <div class="auth-alternative">
-                                <button class="btn btn-primary facebook"><i class="fab fa-facebook"></i>Facebook</button>
-                                <button class="btn btn-primary twitter"><i class="fab fa-twitter"></i>Twitter</button>
-                            </div>
-                            <p class="divider-text">
-                                <span class="bg-white">OR</span>
-                            </p>
-                            <div class="input-group email-address">
-                                <label class="input-label">E-Mail Address</label>
-                                <div class="input">
-                                    <i class="fa fa-envelope"></i>
-                                    <input name="" class="form-control" placeholder="" type="text">
-                                </div>
-                            </div>
-                            <div class="input-group password">
-                                <label class="input-label">Password</label>
-                                <div class="input">
-                                    <i class="fa fa-lock"></i>
-                                    <input name="" class="form-control" placeholder="" type="password">
-                                </div>
-                            </div>
-                            <button class="form-reset btn btn-primary"><i class="fa fa-redo-alt"></i></button>
-                            <div class="form-bottom">
-                                <div class="forgot-account">
-                                    <span><a href="Login.html">Forgot password?</a></span>
-                                    </span>No account? <a href="Login.html">Sign Up</a></span>
-                                </div>
-                                <button type="submit" class="btn btn-primary btn-block">LOG IN</button>
-                            </div>
-                        </form>
-                    </article>
-                </div>
-            </div> 
+    <nav class="navbar navbar-expand-lg navbar-dark stroke" id="nav">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="Home.html"> <img src="../images/fdm-logo.gif" class="nav-log" alt="FDM Logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Questions.html">Questions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Register.html">Sign Up</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Login.html">Sign In</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-<!--container end.//-->
-		<footer>
-			<div class="row text-center">
-				<div class="col-md-12">
-					<h5>For more information about FDM Group, please click the button below:</h5>
-					<button type="button" class="btn btn-outline-light btn-lg">><a href="https://www.fdmgroup.com/">FDM Group Main Page</a></button>
-				</div>
-				<div class="col-12">
-					<hr class="light-100">
-					<h5>&copy; FDM Group 2018</h5>
-				</div>
-			</div>
-		</footer>
+    </nav>
+    <div class="container-fluid galax">
+        <div class="d-flex justify-content-center vertical-center">
+            <div class="card">
+                <form class="login" action="index.html" method="post">
+                    <h1>Login</h1>
+                    <hr class="light-100">
+                    <div class="d-flex justify-content-center form-group ">
+                        <input type="text" name="" placeholder="Username">
+                    </div>
+                    <div class="d-flex justify-content-center form-group col">
+                        <input type="password" name="" placeholder="Password">
+                    </div>
+                    <div class="form-group d-flex justify-content-center">
+                        <input type="submit" name="" value="Login">
+                    </div>
+                    <div class="card-footer">>
+                            <p class="text-center">Don't have an account?</p>
+                            <a href="#">Sign Up</a>
+                        <div class="d-flex justify-content-center">
+                            <a href="#">Forgot your password?</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
+<!--container end.//-->
 </body>
 </html>

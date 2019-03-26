@@ -17,62 +17,67 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark stroke" id="nav">
-				<div class="container-fluid">
-			  		<a class="navbar-brand" href="Home.html"> <img src="../images/fdm-logo.gif" class="nav-log" alt="FDM Logo"></a>
-			  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-			  			<span class="navbar-toggler-icon"></span>
-			  		</button>
-			  		<div class="collapse navbar-collapse" id="navbarResponsive">
-			  			<ul class="navbar-nav ml-auto">
-			  				<li class="nav-item">
-			  					<a class="nav-link" href="Home.html">Home</a>
-			  				</li>
-			  				<li class="nav-item">
-			  					<a class="nav-link" href="Questions.html">Questions</a>
-			  				</li>
-			  				<li class="nav-item active">
-			  					<a class="nav-link" href="Register.html">Sign Up</a>
-			  				</li>
-			  				<li class="nav-item">
-			  					<a class="nav-link" href="Login.html">Sign In</a>
-			  				</li>
-			  			</ul>
-			  		</div>
-				</div>
-			</nav>
-			<div class="container-fluid galax">
-				<div class="d-flex justify-content-center vertical-center">
-					<div class="card">
-						<form class="login" action="index.html" method="post">
-							<h1>Sign Up</h1>
-							<hr class="light-100">
-							<div class="form-group col">
-								<input type="text" name="" placeholder="Username">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="Home.html"> <img src="../images/fdm-logo.gif" class="nav-log" alt="FDM Logo"></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="Home.html">Home</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="Questions.html">Questions</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="Register.html">Sign Up</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="Login.html">Sign In</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		</nav>
+		<div class="container-fluid galax">
+			<div class="d-flex justify-content-center vertical-center">
+				<div class="container login">
+					<div class="container">
+						<div id="quiz">
+							<div class="question margin70">
+								<h3><span class="label label-warning" id="qid">1</span>
+									<span id="question"> Are you a dog?</span>
+								</h3>
 							</div>
-							<div class="form-group col">
-								<input type="password" name="" placeholder="E-Mail Address">
+							<ul>
+								<li>
+									<input type="radio" id="f-option" name="selector" value="1">
+									<label for="f-option" class="element-animation float-left">Yes</label>
+									<div class="check"></div>
+								</li>
+
+								<li>
+									<input type="radio" id="s-option" name="selector" value="2">
+									<label for="s-option" class="element-animation float-left">No</label>
+									<div class="check"><div class="inside"></div></div>
+								</li>
+
+								<li>
+									<input type="radio" id="t-option" name="selector" value="3">
+									<label for="t-option" class="element-animation float-left">Woof</label>
+									<div class="check"><div class="inside"></div></div>
+								</li>
+							</ul>
+							<div class="answer">
+								<button type="button" class="submit-answer buttton-blue">Submit Answer</button>
 							</div>
-							<div class="form-group col">
-								<input type="password" name="" placeholder="Password">
-							</div>
-							<div class="form-group col">
-								<input type="password" name="" placeholder="Confirm Password">
-							</div>
-							<div class="form-group d-flex justify-content-center">
-								<input type="submit" name="" value="Sign Up">
-							</div>
-							<div class="card-footer">>
-									<p class="text-center">Already have an account?</p>
-									<a href="#">Log In</a>
-								<div class="d-flex justify-content-center">
-									<a href="#">Forgot your password?</a>
-								</div>
-							</div>
-						</form>
+						</div>
 					</div>
 				</div>
 			</div>
-<!--container end 
+		</div>
+<!--container end
 		<footer class="footer">
 			<div class="row text-center">
 				<div class="col-md-12">
