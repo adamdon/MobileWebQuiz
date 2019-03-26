@@ -20,6 +20,24 @@ class PlayerModel
 
 
 
+    public static function updatePlayerInArray($playerToUpdate, $arrayOfPlayers)
+    {
+        $strEmail = $playerToUpdate->username;
+
+        foreach ($arrayOfPlayers as $playerIndex) //test if username already taken
+        {
+            if($strEmail == $playerIndex->username)
+            {
+                $playerIndex = $playerToUpdate;
+            }
+        }
+
+
+        return $arrayOfPlayers;
+    }
+
+
+
 
 
 
