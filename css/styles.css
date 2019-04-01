@@ -92,14 +92,27 @@
   }
   
 
-  /*---MAX 576px --*/
+  /*---MIN 576px --*/
 
 
-  @media (max-width: 576px) {
-    
-  }
-  
-
+    @media (min-width: 576px) {
+        .submit-answer.buttton-blue.submargin {
+            margin-right: 30px;
+        }
+        .submit-answer.button-blue {
+            background: none !important;
+            text-align: center;
+            padding: 20px 20px;
+            outline: none;
+            border-radius: 24px;
+            transition: 0.25s;
+            cursor: pointer;
+            border: 3px solid #1daded !important;
+            color: #fff !important;
+            font-size: 20px;
+            width: 195px;
+         }
+    }
 
 
 
@@ -145,8 +158,8 @@ html, body {
     width: 100%;
     transition: 1s;
     line-height: 60px;
-    background-color: rgba(0,0,0,0.85) !important;
 }
+
 #nav.black{
     transition: 1s;
     background-color: rgba(0,0,0,0.65);
@@ -189,6 +202,7 @@ nav.stroke ul li a,
 nav.fill ul li a {
   position: relative;
 }
+
 nav.stroke ul li a:after,
 nav.fill ul li a:after {
   position: absolute;
@@ -228,7 +242,6 @@ nav.stroke ul li a:hover:after {
 
 .carousel-caption {
   bottom: unset !important;
-
 }
 
 .carousel-caption h1 {
@@ -267,8 +280,8 @@ nav.stroke ul li a:hover:after {
 }
 
 .welcome {
+    margin: 70px auto !important;
 	width: 75% !important;
-	margin: 0 auto !important;
 }
 
 .welcome hr {
@@ -314,7 +327,7 @@ nav.stroke ul li a:hover:after {
 }
 
 footer {
-	background-color: rgba(0, 0, 0, 0.85);
+	background-color: rgba(0, 0, 0, 0.70);
 	width: 100%;
 }
 
@@ -325,7 +338,6 @@ footer h5{
 footer a {
 	text-decoration: none;
 	color: #00ff83;
-
 }
 
 footer a:hover {
@@ -349,6 +361,7 @@ hr.light-100 {
 	width: 100%;
 
 }
+
 body {
 	background-color: #e0e0e0;
 	padding: 0;
@@ -391,6 +404,7 @@ body {
   -webkit-backface-visibility: visible;
   backface-visibility: visible;
 }
+
 /*--- Fixed Background Image --*/
 figure {
   position: relative;
@@ -398,6 +412,7 @@ figure {
   height: 60%;
   margin: 0!important;
 }
+
 .fixed-wrap {
   clip: rect(0, auto, auto, 0);
   position: absolute;
@@ -418,12 +433,14 @@ figure {
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
 .divider-text span {
     padding: 7px;
     font-size: 12px;
     position: relative;   
     z-index: 2;
 }
+
 .divider-text:after {
     content: "";
     position: absolute;
@@ -438,6 +455,7 @@ figure {
     background-color: #405D9D;
     color: #fff;
 }
+
 .btn-twitter {
     background-color: #42AEEC;
     color: #fff;
@@ -471,7 +489,7 @@ figure {
   outline: none;
   color: white !important;
   border-radius: 24px;
-	transition: 0.25s;
+    transition: 0.25s;
 }
 .login input[type = "text"]:focus,.login input[type = "password"]:focus{
 	border-color: #2ecc71;
@@ -492,11 +510,13 @@ figure {
 .login input[type = "submit"]:hover{
   background: #2ecc71 !important;
 }
+
 .login h1{
   color: white;
   text-transform: uppercase;
   font-weight: 500;
 }
+
 .login a{
 	color: #fff;
 }
@@ -504,6 +524,7 @@ figure {
 .login a:hover{
 	color: #2ecc71;
 }
+
 .login p {
  color: #3498db;
 }
@@ -552,12 +573,12 @@ figure {
     color: #fff;
     text-decoration: underline;
 }
+
 .container ul{
     list-style: none;
     margin: 0;
     padding: 0;
 }
-
 
 #quiz ul li{
     color: #AAAAAA;
@@ -650,7 +671,7 @@ figure {
 .submit-answer {
     background: none !important;
     text-align: center;
-    padding: 14px 40px;
+    padding: 14px 20px;
     outline: none;
     border-radius: 24px;
     transition: 0.25s;
@@ -658,6 +679,7 @@ figure {
     border: 3px solid #1daded !important;
     color: #fff !important;
     font-size: 20px;
+    width: 195px;
 }
 
 .submit-answer:hover {
@@ -666,4 +688,50 @@ figure {
 
 .submit-answer:focus {
     outline: none;
+}
+
+.quest-status h2 {
+    color: #fff;
+    margin-top: 40px;
+}
+
+hr.light-60 {
+    border-top: 1px solid #d5d5d5;
+    width: 60%;
+}
+
+#table1 {
+    padding: 40px 0;
+    background: rgba(0, 0, 0, 0.80) !important;
+    border: 2px solid rgba(46, 204, 113, 0.50) !important;
+    text-align: center;
+    border-radius: 25px;
+
+}
+
+#table1 th {
+    text-align: center;
+    background: #2ecc71;
+    color: #fff;
+    padding: 18px;
+    font-size: 18px;
+    border: none;
+}
+
+#table1 td {
+    text-align: center;
+    color: #fff;
+    background-color: transparent;
+    padding: 18px;
+    font-size: 15px;
+    font-weight: 600;
+    border-left: 1px solid #2ecc71;
+}
+
+#bord0 {
+    border: none !important;
+}
+
+.top-table.table.table-responsive-sm {
+    margin-bottom: 50px;
 }
