@@ -20,23 +20,33 @@ class View
         $strMessage = $loginHelperState->strMessage;
         $stringOfHTML = '
             
-            </br>
-            <label for="message"><b>' . $strMessage . ' </b></label>
-            </br>
-            </br>
-            <label for="email"><b>Username</b></label>
-            <input type="text" placeholder="Enter Email" id="email" required>
-            </br>
-            </br>
-            <label for="pass"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" id="pass" required>
-            </br>
-            </br>
+              </br>
             </br>
             <button onclick="logIn()" >Login with details</button>
             </br>
             </br>
             <button onclick="loadRegisterPage()">Register a new account</button>
+            
+                <form class="login" id="table1" action="index.html" method="post">
+                    <h1>Login</h1>
+                    <hr class="light-100">
+                    <div class="d-flex justify-content-center form-group ">
+                        <input type="text" name="" id="email" placeholder="Username">
+                    </div>
+                    <div class="d-flex justify-content-center form-group col">
+                        <input type="password" name="" id="pass" placeholder="Password">
+                    </div>
+                    <div class="form-group d-flex justify-content-center">
+                        <input type="button" onclick="logIn()" name="" value="Login" >
+                    </div>
+                    <div class="card-footer">>
+                            <p class="text-center">Don\'t have an account?</p>
+                            <a onclick="loadRegisterPage()"">Sign Up</a>
+                        <div class="d-flex justify-content-center">
+                            <a href="#">' . $strMessage . '</a>
+                        </div>
+                    </div>
+                </form>
     
 	    ';
 
@@ -251,16 +261,9 @@ class View
     private function carouselTopHTML()
     {
         $stringOfHTML = ' 
-            <div class="container-fluid">
-                <div id="slides" class="carousel slide" data-ride="carousel">
-                    <ul class="carousel-indicators">
-                        <li data-target="#slides" data-slide-to="0" class="active"></li>
-                        <li data-target="#slides" data-slide-to="1"></li>
-                    </ul>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="../images/quizhead.jpg">
-                            <div class="carousel-caption">
+            <div class="container-fluid galax">
+            <div class="d-flex justify-content-center vertical-center">
+            <div class="card" id="bord0">
         ';
 
         return $stringOfHTML;
@@ -270,19 +273,10 @@ class View
     private function carouselBottomHTML()
     {
         $stringOfHTML = ' 
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img src="../images/hdrs.jpg">
-						<div class="carousel-caption">
-							<h1 class="display-2">FDM Quizes</h1>
-							<h3>Explore the various categories of quizes that we have to offer!</h3>
-							<button type="button" class="btn btn-primary btn-lg">Explore</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                
+            </div>
+            </div>
+            </div>
 
         ';
 
@@ -293,37 +287,33 @@ class View
     private function navigationBarHTML()
     {
         $stringOfHTML = ' 
-            <div class="header-line">
-            </div>
-                <div class="navigation-main">
-                    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top stroke">
-                        <div class="container-fluid">
-                            <a class="navbar-brand" href="Home.html"> <img src="../images/fdm-logo.gif" class="nav-log" alt="FDM Logo"></a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarResponsive">
-                                <ul class="navbar-nav ml-auto"> 
-                                    <li class="nav-item active">
-                                        <a class="nav-link" onclick="startSession()">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" onclick="logOut()">LogOut</a>
-                                    </li>
-                                    <li class="nav-item ">
-                                        <a class="nav-link" onclick="loadRegisterPage()">Sign Up</a>
-                                    </li>
-                                    <li class="nav-item ">
-                                        <a class="nav-link" onclick="loadLogin()">Sign In</a>
-                                    </li>
-                                    <li class="nav-item ">
-                                        <a class="nav-link" onclick="loadTopScores()">Top Scores</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
+            <nav class="navbar navbar-expand-lg navbar-dark stroke" id="nav">
+                <div id="contid" class="container-fluid">
+                    <a class="navbar-brand" onclick="startSession()"> <img src="../images/fdm-logo.gif" class="nav-log" alt="FDM Logo"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" onclick="startSession()">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" onclick="logOut()">Log Out</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" onclick="loadTopScores()">Top Scores</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" onclick="loadRegisterPage()">Sign Up</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" onclick="loadLogin()">Sign In</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+            </nav>
          
         ';
 
@@ -375,8 +365,8 @@ class View
             </footer>
          
         ';
-
-        return $stringOfHTML;
+        return " ";
+        //return $stringOfHTML;
     }
 
 
