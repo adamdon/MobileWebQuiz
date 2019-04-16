@@ -115,7 +115,6 @@ class View
                             <td>'. $currentName .'</td>
                             <td>'. $currentTotalScore .'</td>
                         </tr>
-
             ';
             $intCounter++;
         }
@@ -124,7 +123,6 @@ class View
                         </tbody>
                     </table>
                 </div>
-        
         ';
 
 
@@ -342,7 +340,7 @@ class View
         $stringOfHTML = ' 
             <nav class="navbar navbar-expand-lg navbar-dark stroke" id="nav">
                 <div id="contid" class="container-fluid">
-                    <a class="navbar-brand" onclick="startSession()"> <img src="../images/fdm-logo.gif" class="nav-log" alt="FDM Logo"></a>
+                    <a class="navbar-brand" onclick="startSession()"> <img src="/images/fdm-logo.gif" class="nav-log" alt="FDM Logo"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                         <span class="navbar-toggler-icon"></span>
                     </button>

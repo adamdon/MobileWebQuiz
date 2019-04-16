@@ -3,6 +3,7 @@
 include 'View.php';
 include 'DataAccessObject.php';
 include 'Helpers/LoginHelper.php';
+include 'Helpers/SqlHelper.php';
 
 include 'Models/QuestionModel.php';
 include 'Models/PlayerModel.php';
