@@ -82,13 +82,22 @@ class View
         //$strRegMessage = $loginHelper->strRegMessage;
 
         $stringOfHTML = '
-            </br>
-            <label for="topScoresMessage"><b>Top Scores</b></label>
-            </br>
-            </br>
-            <table>
+                <div class="container login top-table" id="table1">
+                    <h1>Top Scores</h1>
+                    <hr class="light-60 margin70">
+                    <table class="top-table table table-responsive-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="left-round">#</th>
+                            <th scope="col">Username</th>
+                            <th scope="col" class="right-round">Total Score:</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
 	    ';
+
+        $intCounter = 1;
 
         foreach ($arrayOfPlayers as $playerIndex) // traverse of array
         {
@@ -96,21 +105,20 @@ class View
             $currentTotalScore = $playerIndex->totalScore;
 
             $stringOfHTML .= '
-                <tr>
-                    <td>Player Name:</td>
-                    <td>'. $currentName .'</td>
-                </tr>
-                <tr>
-                    <td>Total Score:</td>
-                    <td>'. $currentTotalScore .'</td>
-                </tr>
-            
+                        <tr>
+                            <th scope="row">'. $intCounter .'</th>
+                            <td>'. $currentName .'</td>
+                            <td>'. $currentTotalScore .'</td>
+                        </tr>
+
             ';
+            $intCounter++;
         }
 
         $stringOfHTML .= '
-        </table>
-        </br>
+                        </tbody>
+                    </table>
+                </div>
         
         ';
 

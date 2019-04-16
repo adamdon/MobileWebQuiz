@@ -105,10 +105,12 @@ class DataAccessObject
         $testPlayer1 = new PlayerModel("john", "pass", false);
         $testPlayer2 = new PlayerModel("jane", "pass", false);
         $testPlayer3 = new PlayerModel("boss", "pass", true);
+        $testPlayer4 = new PlayerModel("Adam", "pass", true);
 
         array_push($arrayOfPlayers, $testPlayer1);
         array_push($arrayOfPlayers, $testPlayer2);
         array_push($arrayOfPlayers, $testPlayer3);
+        array_push($arrayOfPlayers, $testPlayer4);
 
 
         $this->arrayOfPlayers = $arrayOfPlayers;
