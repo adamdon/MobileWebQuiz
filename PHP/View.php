@@ -29,11 +29,9 @@ class View
                     <div class="d-flex justify-content-center form-group col">
                         <input type="password" name="" id="pass" placeholder="Password">
                     </div>
-                    <div class="form-group d-flex justify-content-center">
-                        <input type="button" onclick="logIn()" name="" value="Login" >
-                    </div>
-                    <div class="form-group d-flex justify-content-center">
-                        <input type="button" onclick="loadRegisterPage()" name="" value="Register" >
+                    <div class="answer">
+                        <button type="button" onclick="logIn()" class="submit-answer buttton-blue submargin subpad">Login</button>
+                        <button type="button" onclick="loadRegisterPage()" class="submit-answer buttton-blue subpad">Register</button>
                     </div>
                     <div class="card-footer">>
                         <div class="d-flex justify-content-center">
@@ -168,6 +166,9 @@ class View
             </br>
             </br>
             <button onclick="startGame()" >Start Game</button>
+            
+            
+            
     
 	    ';
 
@@ -190,6 +191,51 @@ class View
         $RadioTextThree = $this->getAnswerTextFromRadioNumber(3, $this->currentGame);
 
         $stringOfHTML = '
+
+            <div class="container-fluid galax">
+                <div class="d-flex justify-content-center vertical-center">
+                    <div class="container login" id="table1">
+                        <div class="container">
+                            <div id="quiz">
+                                <div class="question margin70">
+                                    <h3><span class="label label-warning" id="qid">1</span>
+                                        <span id="question">' . $currentQuestion . '</span>
+                                    </h3>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <input type="radio" id="f-option" name="selector" value="1">
+                                        <label for="f-option" class="element-animation float-left">'.$RadioTextOne.'</label>
+                                        <div class="check"></div>
+                                    </li>
+        
+                                    <li>
+                                        <input type="radio" id="s-option" name="selector" value="2">
+                                        <label for="s-option" class="element-animation float-left">'.$RadioTextTwo.'</label>
+                                        <div class="check"><div class="inside"></div></div>
+                                    </li>
+        
+                                    <li>
+                                        <input type="radio" id="t-option" name="selector" value="3">
+                                        <label for="t-option" class="element-animation float-left">'.$RadioTextThree.'</label>
+                                        <div class="check"><div class="inside"></div></div>
+                                    </li>
+                                </ul>
+                                <div class="answer">
+                                    <button type="button" class="submit-answer buttton-blue submargin subpad">Submit Answer</button>
+                                    <button type="button" class="submit-answer buttton-blue subpad">Next Question</button>
+                                </div>
+                                <div class="quest-status">
+                                    <h2>Status: ' . $textOfStatus . '</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
             <h3>' . $currentQuestion . ' </h3>
             <form action="">
                   <input type="radio" name="options" value="1">'.$RadioTextOne.'<br>
@@ -207,7 +253,7 @@ class View
 
 	    ';
 
-        return ($this->navigationBarHTML() . $this->carouselTopHTML() . $stringOfHTML . $this->carouselBottomHTML() . $this->footerHTML());
+        return ($this->navigationBarHTML() .  $stringOfHTML  . $this->footerHTML());
         //return phpinfo();
     }
 
