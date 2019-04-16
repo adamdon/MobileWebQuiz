@@ -20,12 +20,14 @@ class Controller
     public $currentView;
     public $dAO;
     public $loginHelper;
+    public $sqlHelper;
 
     public function __construct()  //$model, $view)
     {
         $this->currentView = new View;
         $this->dAO = new DataAccessObject();
         $this->loginHelper = new LoginHelper();
+        //$this->sqlHelper = new SqlHelper();
 
 
         $this->currentGame = (object)[];

@@ -11,7 +11,6 @@ class DataAccessObject
         $this->arrayOfPlayers = [];
         $this->arrayOfQuestions = [];
 
-
     }
 
 

@@ -15,7 +15,7 @@ if(isset($_GET['request'], $_GET['p1'], $_GET['p2']) == true)
 
     if(empty($_SESSION["controller"]))
     {
-        echo "session not found";
+        //echo "session not found";
         $controllerTemp = new Controller();
         $_SESSION["controller"] = serialize($controllerTemp);
     }
