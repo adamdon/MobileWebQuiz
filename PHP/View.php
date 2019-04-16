@@ -64,9 +64,9 @@ class View
 					<div class="form-group col">
 						<input type="password" name="" placeholder="Confirm Password" id="pass2">
 					</div>
-					<div class="form-group d-flex justify-content-center">
-						<input type="button" name="" onclick="registerNewDetails()" value="Sign Up">
-					</div>
+					 <div class="answer">
+                        <button type="button" onclick="registerNewDetails()" class="submit-answer buttton-blue subpad">Sign Up</button>
+                    </div>
 					<div class="card-footer">>
 						<div class="d-flex justify-content-center">
 							<a href="#">' . $strRegMessage . ' </a>
