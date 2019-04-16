@@ -198,32 +198,32 @@ class View
                         <div class="container">
                             <div id="quiz">
                                 <div class="question margin70">
-                                    <h3><span class="label label-warning" id="qid">1</span>
+                                    <h3><span class="label label-warning" id="qid"> </span>
                                         <span id="question">' . $currentQuestion . '</span>
                                     </h3>
                                 </div>
                                 <ul>
                                     <li>
-                                        <input type="radio" id="f-option" name="selector" value="1">
+                                        <input type="radio" id="f-option" name="options" value="1">
                                         <label for="f-option" class="element-animation float-left">'.$RadioTextOne.'</label>
                                         <div class="check"></div>
                                     </li>
         
                                     <li>
-                                        <input type="radio" id="s-option" name="selector" value="2">
+                                        <input type="radio" id="s-option" name="options" value="2">
                                         <label for="s-option" class="element-animation float-left">'.$RadioTextTwo.'</label>
                                         <div class="check"><div class="inside"></div></div>
                                     </li>
         
                                     <li>
-                                        <input type="radio" id="t-option" name="selector" value="3">
+                                        <input type="radio" id="t-option" name="options" value="3">
                                         <label for="t-option" class="element-animation float-left">'.$RadioTextThree.'</label>
                                         <div class="check"><div class="inside"></div></div>
                                     </li>
                                 </ul>
                                 <div class="answer">
-                                    <button type="button" class="submit-answer buttton-blue submargin subpad">Submit Answer</button>
-                                    <button type="button" class="submit-answer buttton-blue subpad">Next Question</button>
+                                    <button type="button" onclick="submitAnswer()" class="submit-answer buttton-blue submargin subpad">Submit Answer</button>
+                                    <button type="button" onclick="nextRound()" class="submit-answer buttton-blue subpad">Next Question</button>
                                 </div>
                                 <div class="quest-status">
                                     <h2>Status: ' . $textOfStatus . '</h2>
@@ -233,23 +233,6 @@ class View
                     </div>
                 </div>
             </div>
-
-
-
-            <h3>' . $currentQuestion . ' </h3>
-            <form action="">
-                  <input type="radio" name="options" value="1">'.$RadioTextOne.'<br>
-                  <input type="radio" name="options" value="2">'.$RadioTextTwo.'<br>
-                  <input type="radio" name="options" value="3">'.$RadioTextThree.'<br>
-            </form>
-            <button onclick="submitAnswer()" >Submit Answer</button>
-            </br>
-            </br>
-            <h3 id="status">Status: ' . $textOfStatus .' </h3>
-            
-            '. $this->gameStatsHTML() .'
-            
-            <button onclick="nextRound()" >Next Round</button>
 
 	    ';
 
