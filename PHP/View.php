@@ -53,23 +53,30 @@ class View
         $strRegMessage = $loginHelper->strRegMessage;
 
         $stringOfHTML = '
-            </br>
-            <label for="regMessage"><b>' . $strRegMessage . ' </b></label>
-            </br>
-            </br>
-            </br>
-            <label for="email"><b>Set Username</b></label>
-            <input type="text" placeholder="Enter a username" id="email" required>
-            </br>
-            </br>
-            <label for="pass1"><b>Password</b></label>
-            <input type="password" placeholder="Enter password" id="pass1" required>
-            </br>
-            <label for="pass2"><b>Password</b></label>
-            <input type="password" placeholder="Confirm Password" id="pass2" required>
-            </br>
-            </br>
-            <button onclick="registerNewDetails()">Register</button>
+            
+            <form class="login" id="table1" action="index.html" method="post">
+					<h1>Sign Up</h1>
+					<hr class="light-100">
+					<div class="form-group col">
+						<input type="text" name="" placeholder="Username" id="email" >
+					</div>
+					<div class="form-group col">
+						<input type="password" name="" placeholder="Password" id="pass1" >
+					</div>
+					<div class="form-group col">
+						<input type="password" name="" placeholder="Confirm Password" id="pass2">
+					</div>
+					<div class="form-group d-flex justify-content-center">
+						<input type="button" name="" onclick="registerNewDetails()" value="Sign Up">
+					</div>
+					<div class="card-footer">>
+						<div class="d-flex justify-content-center">
+							<a href="#">' . $strRegMessage . ' </a>
+						</div>
+					</div>
+				</form>
+
+            
     
 	    ';
 
@@ -310,7 +317,7 @@ class View
                                 <a class="nav-link" onclick="loadRegisterPage()">Sign Up</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" onclick="loadLogin()">Sign In</a>
+                                <a class="nav-link" onclick="startSession()">Sign In</a>
                             </li>
                         </ul>
                     </div>
