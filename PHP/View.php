@@ -20,13 +20,6 @@ class View
         $strMessage = $loginHelperState->strMessage;
         $stringOfHTML = '
             
-              </br>
-            </br>
-            <button onclick="logIn()" >Login with details</button>
-            </br>
-            </br>
-            <button onclick="loadRegisterPage()">Register a new account</button>
-            
                 <form class="login" id="table1" action="index.html" method="post">
                     <h1>Login</h1>
                     <hr class="light-100">
@@ -39,9 +32,10 @@ class View
                     <div class="form-group d-flex justify-content-center">
                         <input type="button" onclick="logIn()" name="" value="Login" >
                     </div>
+                    <div class="form-group d-flex justify-content-center">
+                        <input type="button" onclick="loadRegisterPage()" name="" value="Register" >
+                    </div>
                     <div class="card-footer">>
-                            <p class="text-center">Don\'t have an account?</p>
-                            <a onclick="loadRegisterPage()"">Sign Up</a>
                         <div class="d-flex justify-content-center">
                             <a href="#">' . $strMessage . '</a>
                         </div>
