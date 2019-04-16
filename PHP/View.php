@@ -143,29 +143,40 @@ class View
         $currentUserName = $loginHelper->playerLoggedIn->username;
 
         $stringOfHTML = '
-            </br>
-            <h3>Welcome back '. $currentUserName .'</h3>
-            </br>
-            </br>   
-            <select id="selectRounds">
-                <option value="1" selected="selected">Rounds to play: 1</option>
-                <option value="2">Rounds to play: 2</option>
-                <option value="3">Rounds to play: 3</option>
-                <option value="4">Rounds to play: 4</option>
-                <option value="5">Rounds to play: 5</option>
-            </select> 
-            </br>
-            </br>   
-            <select id="selectCategory">
-                <option value="Capital Cities" selected="selected">Capital Cities</option>
-                <option value="Movie Quotes">Movie Quotes</option>
-                <option value="null">Null</option>
-                <option value="null">Null</option>
-                <option value="null">Null</option>
-            </select> 
-            </br>
-            </br>
-            <button onclick="startGame()" >Start Game</button>
+            
+                <form class="login" id="table1" action="index.html" method="post">
+					<h1>Select Category</h1>
+					<hr class="light-100">
+					<div class="form-group col">
+                        </br>   
+                        <select id="selectRounds">
+                            <option value="1" selected="selected">Rounds to play: 1</option>
+                            <option value="2">Rounds to play: 2</option>
+                            <option value="3">Rounds to play: 3</option>
+                            <option value="4">Rounds to play: 4</option>
+                            <option value="5">Rounds to play: 5</option>
+                        </select> 
+                        </br>
+					</div>
+					<div class="form-group col">
+                        </br>   
+                        <select id="selectCategory">
+                            <option value="Capital Cities" selected="selected">Capital Cities</option>
+                            <option value="Movie Quotes">Movie Quotes</option>
+                        </select> 
+                        </br>
+					</div>
+
+					 <div class="answer">
+                        <button type="button" onclick="startGame()" class="submit-answer buttton-blue subpad">Start Game</button>
+                    </div>
+					<div class="card-footer">>
+						<div class="d-flex justify-content-center">
+							<a href="#">Welcome back '. $currentUserName .'</a>
+						</div>
+					</div>
+				</form>
+
             
             
             
