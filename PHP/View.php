@@ -185,6 +185,7 @@ class View
         $textOfCurrentRound = (int)$this->currentGame->numberOfCurrentRound;
         $currentQuestion = $this->currentGame->arrayOfRounds[$textOfCurrentRound]->questionCorrect->strQuestion;
 
+        $textOfCurrentRound = (int)$this->currentGame->numberOfCurrentRound;
 
         $RadioTextOne = $this->getAnswerTextFromRadioNumber(1, $this->currentGame);
         $RadioTextTwo = $this->getAnswerTextFromRadioNumber(2, $this->currentGame);
@@ -198,7 +199,7 @@ class View
                         <div class="container">
                             <div id="quiz">
                                 <div class="question margin70">
-                                    <h3><span class="label label-warning" id="qid"> </span>
+                                    <h3><span class="label label-warning" id="qid">'. ($textOfCurrentRound + 1) .'</span>
                                         <span id="question">' . $currentQuestion . '</span>
                                     </h3>
                                 </div>
@@ -258,29 +259,32 @@ class View
     {
         $textOfPlayerName = $this->currentGame->player->username;
         $textOfTotalRounds = $this->currentGame->numberOfRoundsToBePlayed;
-        $textOfCurrentRound = (int)$this->currentGame->numberOfCurrentRound;
+        //$textOfCurrentRound = (int)$this->currentGame->numberOfCurrentRound;
         $textOfScore = $this->currentGame->numberOfScore;
 
 
         $stringOfHTML = '
-                    <table>
-                <tr>
-                    <td>Player Name:</td>
-                    <td>'. $textOfPlayerName .'</td>
-                </tr>
-                <tr>
-                    <td>Total Rounds:</td>
-                    <td>'. $textOfTotalRounds .'</td>
-                </tr>
-                <tr>
-                    <td>Current Round:</td>
-                    <td>'. ($textOfCurrentRound + 1) .'</td>
-                </tr>
-                <tr>
-                    <td>Score:</td>
-                    <td>'. $textOfScore .'</td>
-                </tr>
-            </table>
+                
+                <div class="container login top-table" id="table1">
+                    <h1>Results</h1>
+                    <hr class="light-60 margin70">
+                    <table class="top-table table table-responsive-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="left-round">Username</th>
+                            <th scope="col">Total Rounds</th>
+                            <th scope="col" class="right-round">Total Score</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">'. $textOfPlayerName .'</th>
+                            <td>'. $textOfTotalRounds .'</td>
+                            <td>'. $textOfScore .'</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
         
         ';
 
